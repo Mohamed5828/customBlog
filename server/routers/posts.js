@@ -2,17 +2,17 @@ const express = require("express");
 const router = express.Router();
 const Schemas = require("../Schemas");
 
-router.get("/posts", async (req, res) => {
-  const post = Schemas.Posts;
-  const myPosts = await post.find({}, (err, postData) => {
-    if (err) throw err;
-    if (postData) {
-      res.end(JSON.stringify(postData));
-    } else {
-      res.end();
-    }
-  });
-});
+// router.get("/posts", async (req, res) => {
+//   const post = Schemas.Posts;
+//   const myPosts = await post.find({}, (err, postData) => {
+//     if (err) throw err;
+//     if (postData) {
+//       res.end(JSON.stringify(postData));
+//     } else {
+//       res.end();
+//     }
+//   });
+// });
 
 router.post("/addpost", async (req, res) => {
   const post = req.body.postInput;

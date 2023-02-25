@@ -19,7 +19,11 @@ const CreateTopic = () => {
     <div className="container">
       //navbar
       <form method="POST" action="/addpost">
-        <input type="text" name="postInput" />
+        <input
+          type="hidden"
+          name="postInput"
+          value={"text from hidden input type!!"}
+        />
         <input type="submit" value={"Submit"} />
       </form>
       <TextEditor data={setPostData} />

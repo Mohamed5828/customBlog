@@ -22,7 +22,7 @@ export default function TextEditor(editorData) {
     if (quill == null) return;
     quill.on("text-change", (delta, oldDelta, source) => {
       editorData = quill.root.innerHTML;
-      // console.log(editorData);
+      console.log(editorData);
     });
   }, [quill]);
 
