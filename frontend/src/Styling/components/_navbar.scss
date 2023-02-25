@@ -1,0 +1,11 @@
+.navbar {
+  @extend %flex-layout;
+  padding: $base-padding * 2;
+  box-shadow: $base-box-shadow;
+  .site-title {
+    font-size: $large-font-size;
+  }
+  .container {
+    @extend %flex-layout;
+  }
+}

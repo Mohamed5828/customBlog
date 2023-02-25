@@ -1,0 +1,8 @@
+@use "sass:math";
+@mixin card() {
+  display: inline-block;
+  padding: $base-padding * 2;
+  border: $base-border-thickness solid #fff;
+  box-shadow: $base-box-shadow;
+  border-radius: math.div($base-border-radius, 2);
+}
