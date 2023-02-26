@@ -2,17 +2,7 @@ import React from "react";
 import ImageSlider from "./components/ImageSlider";
 
 const SliderData = "";
-// const mongoose = require("mongoose");
-// const Document = require("./s/Document");
-// mongoose.connect("mongodb://127.0.0.1/Docs");
-// async function getData() {
-//   try {
-//     console.log(`---${Document}`);
-//   } catch (e) {
-//     console.log(e.message);
-//   }
-// }
-// getData();
+
 const HomePage = () => {
   return (
     <div>

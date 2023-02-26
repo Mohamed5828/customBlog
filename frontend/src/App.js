@@ -1,5 +1,5 @@
 import React from "react";
-import CreateTopic from "./components/CreateTopic";
+import FormHandler from "./components/FormHandler";
 import HomePage from "./HomePage";
 import {
   BrowserRouter as Router,
@@ -18,7 +18,7 @@ function App() {
           path="/"
           element={<a href={`documents/${uuidV4()}`}>Create Document</a>}
         />
-        <Route path="/documents/:id" element={<CreateTopic />} />
+        <Route path="/documents/:id" element={<FormHandler />} />
         <Route path="/documents/home" element={<HomePage />} />
       </Routes>
     </Router>

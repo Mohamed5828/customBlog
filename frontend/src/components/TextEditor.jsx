@@ -15,14 +15,13 @@ const TOOLBAR_OPTIONS = [
   ["clean"],
 ];
 
-export default function TextEditor(editorData) {
+export default function TextEditor({ setPostData }) {
   const [quill, setQuill] = useState();
   const { id: documentId } = useParams();
   useEffect(() => {
     if (quill == null) return;
     quill.on("text-change", (delta, oldDelta, source) => {
-      editorData = quill.root.innerHTML;
-      console.log(editorData);
+      setPostData(quill.root.innerHTML);
     });
   }, [quill]);
 
@@ -34,8 +33,9 @@ export default function TextEditor(editorData) {
     const q = new Quill(editor, {
       theme: "snow",
       modules: { toolbar: TOOLBAR_OPTIONS },
+      placeholder: "Lets Type",
     });
-    q.setText("Loading...");
+
     setQuill(q);
   }, []);
 

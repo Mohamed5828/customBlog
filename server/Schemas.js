@@ -3,10 +3,12 @@ const Schema = mongoose.Schema;
 
 const blogPosts = new Schema({
   posts: { type: Object },
+  title: { type: String },
 });
 
 const draftPosts = new Schema({
-  draftPosts: { type: Object },
+  drafts: { type: Object },
+  title: { type: String },
 });
 
 const Posts = mongoose.model("posts", blogPosts, "posts");
