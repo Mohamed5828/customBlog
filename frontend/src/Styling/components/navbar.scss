@@ -1,0 +1,37 @@
+@import "../sassStyling/colors";
+@import "../sassStyling/variables";
+@import "../sassStyling/breakpoints";
+// @import "../sassStyling/gridSystem";
+.navbar {
+  @extend %flex-layout;
+  padding: $base-padding * 1.5;
+  box-shadow: $base-box-shadow;
+  background-color: $navbarBackground;
+  position: fixed;
+  z-index: 1;
+
+  .site-title {
+    font-size: $large-font-size;
+  }
+  .container {
+    @extend %flex-layout;
+  }
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.navbar li {
+  list-style: none;
+  display: inline-block;
+}
+.navbar li a {
+  text-decoration: none;
+  padding: $base-padding;
+  transition: $main-transition;
+  color: $navbarText;
+}
+.navbar li a :hover {
+  opacity: 0.8;
+}

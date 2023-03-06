@@ -4,6 +4,7 @@ const Schemas = require("../Schemas");
 
 router.get("/posts", async (req, res) => {
   const post = Schemas.Posts;
+  // console.log(post.find({}));
   const myPosts = await post.find({}).exec((err, postData) => {
     if (err) throw err;
     if (postData) {
@@ -12,6 +13,19 @@ router.get("/posts", async (req, res) => {
       res.end();
     }
   });
+});
+router.get("/post/:id", async (req, res) => {
+  const post = Schemas.Posts;
+  const myPosts = await post
+    .findById(`${req.params.id}`)
+    .exec((err, postData) => {
+      if (err) throw err;
+      if (postData) {
+        res.end(JSON.stringify(postData));
+      } else {
+        res.end();
+      }
+    });
 });
 router.post("/addpost", async (req, res) => {
   const post = req.body.postInput;
@@ -29,6 +43,20 @@ router.post("/addpost", async (req, res) => {
     res.end("post Failed");
   }
 });
+
+router.get("/drafts", async (req, res) => {
+  const draft = Schemas.Drafts;
+  // console.log(post.find({}));
+  const myDrafts = await draft.find({}).exec((err, draftData) => {
+    if (err) throw err;
+    if (draftData) {
+      res.end(JSON.stringify(draftData));
+    } else {
+      res.end();
+    }
+  });
+});
+
 router.post("/adddraft", async (req, res) => {
   const draft = req.body.postInput;
   const title = req.body.titleInput;

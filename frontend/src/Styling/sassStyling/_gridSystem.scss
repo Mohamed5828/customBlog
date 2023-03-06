@@ -1,10 +1,26 @@
 @use "sass:math";
 
 $grid-columns: 12;
-
+$grid-gaps: (
+  "0": 0,
+  "1": 10px,
+  "2": 20px,
+  "3": 30px,
+);
 .row {
   display: flex;
+  justify-content: center;
   flex-flow: row wrap;
+}
+
+@each $key, $val in $grid-gaps {
+  .gap-#{$key} > * {
+    padding: $val;
+  }
+  .gap-#{$key} {
+    margin-left: -$val;
+    margin-right: -$val;
+  }
 }
 
 @include xs {
@@ -12,7 +28,7 @@ $grid-columns: 12;
     .col-#{$i}-xs {
       box-sizing: border-box;
       flex-grow: 0;
-      width: math.div($i * 100, $grid-columns);
+      width: math.div($i * 100%, $grid-columns);
     }
   }
 }
@@ -21,7 +37,7 @@ $grid-columns: 12;
     .col-#{$i}-sm {
       box-sizing: border-box;
       flex-grow: 0;
-      width: math.div($i * 100, $grid-columns);
+      width: math.div($i * 100%, $grid-columns);
     }
   }
 }
@@ -30,7 +46,7 @@ $grid-columns: 12;
     .col-#{$i}-md {
       box-sizing: border-box;
       flex-grow: 0;
-      width: math.div($i * 100, $grid-columns);
+      width: math.div($i * 100%, $grid-columns);
     }
   }
 }
@@ -39,7 +55,7 @@ $grid-columns: 12;
     .col-#{$i}-lg {
       box-sizing: border-box;
       flex-grow: 0;
-      width: math.div($i * 100, $grid-columns);
+      width: math.div($i * 100%, $grid-columns);
     }
   }
 }
@@ -48,7 +64,7 @@ $grid-columns: 12;
     .col-#{$i}-xl {
       box-sizing: border-box;
       flex-grow: 0;
-      width: math.div($i * 100, $grid-columns);
+      width: math.div($i * 100%, $grid-columns);
     }
   }
 }

@@ -1,22 +1,31 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import "../Styling/components/blogPost.css";
 
 function DisplayPost() {
-  const [itemData, setItemData] = useState([]);
-  async function fetchItems() {
-    const data = await fetch("/posts");
-    const items = await data.json();
-    setItemData(items);
-  }
   useEffect(() => {
     fetchItems();
   }, []);
+  const { id } = useParams();
+  const [itemData, setItemData] = useState([""]);
+  async function fetchItems() {
+    const data = await fetch(`/post/${id}`);
+    const items = await data.json();
+    setItemData(items);
+  }
+  console.log(id);
+  function innerHtml() {
+    // itemData.map((item) => {
+    // console.log(itemData[0].posts);
+    return { __html: itemData.posts };
+    // });
+  }
+
   return (
-    <div>
-      <div>
-        {itemData.map((item) => {
-          return <div>{item.posts}</div>;
-        })}
+    <div className="post-container">
+      <div className="post-content">
+        <div dangerouslySetInnerHTML={innerHtml()}></div>
       </div>
     </div>
   );

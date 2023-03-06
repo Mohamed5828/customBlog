@@ -1,0 +1,46 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+
+html {
+  color-scheme: dark light;
+}
+
+.write-container {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 0;
+  padding: 0 0.75rem;
+  padding-top: 5rem;
+  box-sizing: border-box;
+  background-color: #e3fdfd;
+}
+
+.write-container {
+  background-color: #e3fdfd;
+  display: flex;
+  justify-content: center;
+}
+
+.editor {
+  background-color: white;
+}

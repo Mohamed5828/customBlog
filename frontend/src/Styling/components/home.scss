@@ -1,0 +1,61 @@
+@import "../sassStyling/colors";
+@import "../sassStyling/variables";
+@import "../sassStyling/breakpoints";
+@import "../sassStyling/gridSystem";
+
+.img-slider {
+  display: block;
+}
+
+.header {
+  display: block;
+  width: 100%;
+}
+
+.home-container {
+  @extend %container;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.right-arrow {
+  @extend %arrow;
+  right: 0%;
+}
+.left-arrow {
+  @extend %arrow;
+  left: 0%;
+}
+
+.slide {
+  opacity: 0;
+  transition-duration: 1s ease;
+  max-width: 800px;
+}
+.img {
+  position: relative;
+}
+
+.slide.active {
+  opacity: 1;
+  transition-duration: 1s;
+  transform: scale(1);
+}
+
+.img-description {
+  color: antiquewhite;
+  background-color: black;
+  opacity: 0.4;
+  position: absolute;
+  bottom: 0%;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: $footer;
+  width: 100%;
+  padding: $base-padding;
+}

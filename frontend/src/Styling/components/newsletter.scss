@@ -1,0 +1,16 @@
+@import "../sassStyling/colors";
+@import "../sassStyling/variables";
+@import "../sassStyling/breakpoints";
+
+.newsletter {
+  display: flex;
+  padding: $base-padding * 9;
+  background-color: rgb(206, 121, 121);
+  width: 100%;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.email-input {
+  @extend %input-field;
+}

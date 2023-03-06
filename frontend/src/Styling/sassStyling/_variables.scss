@@ -1,0 +1,80 @@
+@use "sass:math";
+//reset
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100vh;
+}
+html {
+  color-scheme: dark light;
+}
+//Variables
+$base-padding: 0.75rem;
+
+$base-margin: 0.75rem;
+
+$top-padding: 5rem;
+
+$base-border-thickness: 1px;
+
+$base-border-radius: 20px;
+
+$base-box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+
+$base-font-size: 1rem;
+
+$large-font-size: $base-font-size * 1.5;
+
+$main-transition: all 0.3s ease 0s;
+
+%container {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 0;
+  padding: 0 $base-padding;
+  padding-top: $top-padding;
+  box-sizing: border-box;
+  background-color: $backgroundPrimary;
+}
+
+%flex-layout {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+%arrow {
+  position: absolute;
+  font-size: 3rem;
+  top: 50%;
+  opacity: 0.5;
+  color: grey;
+  z-index: 1;
+  cursor: pointer;
+  user-select: none;
+}
+
+%input-field {
+  padding: $base-padding * 0.5;
+  border: none;
+  box-shadow: $base-box-shadow;
+  width: 70%;
+  max-width: 250px;
+  min-width: 150px;
+}

@@ -1,3 +1,7 @@
+@import "../sassStyling/colors";
+@import "../sassStyling/variables";
+@import "../sassStyling/breakpoints";
+@import "../sassStyling/gridSystem";
 @mixin btn($bg-color) {
   text-decoration: none;
   cursor: pointer;

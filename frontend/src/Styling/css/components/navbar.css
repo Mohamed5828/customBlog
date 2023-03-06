@@ -1,0 +1,64 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+
+html {
+  color-scheme: dark light;
+}
+
+.navbar .container, .navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.navbar {
+  padding: 1.125rem;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+  background-color: #112d4e;
+  position: fixed;
+  z-index: 1;
+}
+.navbar .site-title {
+  font-size: 1.5rem;
+}
+.logo {
+  cursor: pointer;
+}
+
+.navbar li {
+  list-style: none;
+  display: inline-block;
+}
+
+.navbar li a {
+  text-decoration: none;
+  padding: 0.75rem;
+  transition: all 0.3s ease 0s;
+  color: #eeeeee;
+}
+
+.navbar li a :hover {
+  opacity: 0.8;
+}

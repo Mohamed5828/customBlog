@@ -1,8 +1,17 @@
 @use "sass:math";
+@import "../sassStyling/colors";
+@import "../sassStyling/variables";
+@import "../sassStyling/breakpoints";
+@import "../sassStyling/gridSystem";
 @mixin card() {
   display: inline-block;
   padding: $base-padding * 2;
   border: $base-border-thickness solid #fff;
   box-shadow: $base-box-shadow;
   border-radius: math.div($base-border-radius, 2);
+  background-color: $backgroundSecondary;
+}
+
+.cards {
+  @include card();
 }
