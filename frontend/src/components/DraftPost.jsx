@@ -12,12 +12,26 @@ function DraftPost() {
     setItemData(items);
   }
   return (
-    <div className="post-container">
+    <div className="allItems-container">
       {itemData.map((item) => {
         return (
-          <div>
-            <h1 className="card-title">{item.title}</h1>
-            <p className="card-desc">{item.drafts}</p>
+          <div className="post-item">
+            <div className="main-padding">
+              <img
+                className="all-img"
+                src="https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              />
+              <div className="all-description">
+                <h1 className="card-title">{item.title}</h1>
+                <p className="card-desc">{item.description}</p>
+              </div>
+              <form
+                action={`/deletedraft/${item._id}?_method=DELETE`}
+                method="POST"
+              >
+                <button className="delete-btn">delete</button>
+              </form>
+            </div>
           </div>
         );
       })}

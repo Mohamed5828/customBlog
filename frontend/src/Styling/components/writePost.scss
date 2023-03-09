@@ -11,3 +11,11 @@
 .editor {
   background-color: white;
 }
+.title-input {
+  @extend %input-field;
+  margin: $base-margin 4px;
+}
+.description-input {
+  @extend %input-field;
+  margin: $base-margin 4px;
+}

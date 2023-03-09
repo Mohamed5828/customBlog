@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Allposts from "./components/Allposts";
 import DraftPost from "./components/DraftPost";
+import PostSubmitted from "./components/PostSubmitted";
 
 function App() {
   console.log("hi");
@@ -16,8 +17,10 @@ function App() {
         <Route path="/allposts" element={<Allposts />} />
         <Route path="/drafts" element={<DraftPost />} />
         <Route path="/documents/:id" element={<FormHandler />} />
+        <Route path="/update/:id" element={<FormHandler />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/post/:id" element={<DisplayPost />} />
+        <Route path="/postsubmitted" element={<PostSubmitted />} />
       </Routes>
     </Router>
   );

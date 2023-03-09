@@ -3,6 +3,7 @@ import ImageSlider from "./components/ImageSlider";
 import Newsletter from "./components/Newsletter";
 import "../src/Styling/components/home.css";
 import "../src/Styling/components/card.css";
+import "../src/Styling/components/btn.css";
 import { Link } from "react-router-dom";
 const slides = [
   {
@@ -42,7 +43,7 @@ const HomePage = () => {
           <div className="row gap-2">
             {itemData.map((item) => {
               return (
-                <div className="col-12-xs col-5-sm col-3-xl" key={item._id}>
+                <div className="col-12-xs col-5-sm col-4-xl" key={item._id}>
                   <Link to={`http://localhost:3000/post/${item._id}`}>
                     <div className="cards">
                       <img
@@ -50,7 +51,7 @@ const HomePage = () => {
                         src="https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                       />
                       <h1 className="card-title">{item.title}</h1>
-                      <p className="card-desc">{item.posts}</p>
+                      <p className="card-desc">{item.description}</p>
                     </div>
                   </Link>
                 </div>

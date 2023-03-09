@@ -35,6 +35,15 @@ html {
   background-color: #e3fdfd;
 }
 
+.description-input, .title-input {
+  padding: 0.375rem;
+  border: none;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+  width: 70%;
+  max-width: 250px;
+  min-width: 150px;
+}
+
 .write-container {
   background-color: #e3fdfd;
   display: flex;
@@ -43,4 +52,12 @@ html {
 
 .editor {
   background-color: white;
+}
+
+.title-input {
+  margin: 0.75rem 4px;
+}
+
+.description-input {
+  margin: 0.75rem 4px;
 }/*# sourceMappingURL=writePost.css.map */

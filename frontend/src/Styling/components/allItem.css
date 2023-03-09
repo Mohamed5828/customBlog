@@ -1,0 +1,145 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+
+html {
+  color-scheme: dark light;
+}
+
+.allItems-container {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 0;
+  padding: 0 0.75rem;
+  padding-top: 5rem;
+  box-sizing: border-box;
+  background-color: #e3fdfd;
+}
+
+.allItems-container {
+  background-color: #e3fdfd;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.post-item {
+  padding: 0.75rem;
+  margin: 0.75rem;
+  width: 100%;
+  border-bottom: 1px solid grey;
+  display: grid;
+  grid-template-columns: 94% 6%;
+}
+
+.main-padding {
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  grid-column-start: 1;
+  grid-column-end: 1;
+}
+
+.allpg-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  grid-column-start: 2;
+  grid-column-end: 2;
+}
+
+.form-delete {
+  display: inline;
+  max-width: 0.75rem;
+}
+
+.form-edit {
+  display: inline;
+  max-width: 0.75rem;
+}
+
+.all-description {
+  align-self: center;
+  display: inline-block;
+  margin-left: 1.125rem;
+}
+
+@media (min-width: 0) {
+  .all-img {
+    display: inline-block;
+    width: 70%;
+    height: 65%;
+  }
+  .allpg-btn {
+    display: none;
+  }
+}
+@media (min-width: 480px) {
+  .all-img {
+    display: inline-block;
+    width: 50%;
+    height: 80%;
+  }
+  .allpg-btn {
+    display: flex;
+  }
+}
+@media (min-width: 720px) {
+  .all-img {
+    display: inline-block;
+    width: 40%;
+    height: 70%;
+  }
+  .allpg-btn {
+    display: flex;
+  }
+}
+@media (min-width: 960px) {
+  .all-img {
+    display: inline-block;
+    width: 40%;
+    height: 80%;
+  }
+  .allpg-btn {
+    display: flex;
+  }
+}
+@media (min-width: 0) {
+  .all-description {
+    font-size: 0.7rem;
+  }
+}
+@media (min-width: 480px) {
+  .all-description {
+    font-size: 0.75rem;
+  }
+}
+@media (min-width: 720px) {
+  .all-description {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 960px) {
+  .all-description {
+    font-size: 1rem;
+  }
+}/*# sourceMappingURL=allItem.css.map */

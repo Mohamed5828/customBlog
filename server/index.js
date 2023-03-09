@@ -3,11 +3,14 @@ const routesHandler = require("./routers/posts");
 require("dotenv/config");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const methodOverride = require("method-override");
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ limit: "25mb" }));
+app.use(express.json({ limit: "25mb" }));
 app.use(bodyParser.json());
 app.use("/", routesHandler);
+app.use(methodOverride("_method"));
 mongoose
   .connect(process.env.DB_URI, {
     useNewUrlParser: true,

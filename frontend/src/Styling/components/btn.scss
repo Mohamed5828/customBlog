@@ -7,7 +7,22 @@
   cursor: pointer;
   display: inline-block;
   border: 0;
-  border-radius: $base-border-radius;
   padding: $base-padding;
   background-color: $bg-color;
+  color: black;
+}
+@mixin hover() {
+}
+.delete-btn {
+  @include btn($primary);
+  padding: $base-padding $base-padding * 2;
+}
+
+.submit-btn {
+  @include btn($primary);
+  margin: $base-margin;
+}
+.draft-btn {
+  @include btn($primary);
+  margin: $base-margin;
 }

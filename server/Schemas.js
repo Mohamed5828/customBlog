@@ -4,11 +4,13 @@ const Schema = mongoose.Schema;
 const blogPosts = new Schema({
   posts: { type: Object },
   title: { type: String },
+  description: { type: String },
 });
 
 const draftPosts = new Schema({
   drafts: { type: Object },
   title: { type: String },
+  description: { type: String },
 });
 
 const Posts = mongoose.model("posts", blogPosts, "posts");

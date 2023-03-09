@@ -10,6 +10,7 @@ function FormHandler() {
   const [publish, setPublish] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
+    postDescription: "",
   });
   function handleChange(event) {
     setFormData((prevFormData) => {
@@ -25,23 +26,41 @@ function FormHandler() {
       <form method="POST" action={publish === true ? "/addpost" : "/adddraft"}>
         <input type="hidden" name="postInput" value={postData} />
         <input type="hidden" name="titleInput" value={formData.title} />
+        <input
+          type="hidden"
+          name="description"
+          value={formData.postDescription}
+        />
         <div className="inputs">
-          <label htmlFor="title" className="title-label">
-            Post Title:
+          <div className="title">
+            <label htmlFor="title" className="title-label">
+              Post Title:
+            </label>
+            <input
+              className="title-input"
+              type="text"
+              placeholder="Enter Title"
+              name="title"
+              onChange={handleChange}
+            />
+          </div>
+          <label htmlFor="postDescription" className="description-label">
+            Post Description:
           </label>
           <input
-            className="title-input"
+            className="description-input"
             type="text"
-            placeholder="Enter Title"
-            name="title"
+            placeholder="Enter description for the post"
+            name="postDescription"
             onChange={handleChange}
           />
           <div className="editor">
             <TextEditor setPostData={setPostData} onChange={handleChange} />
           </div>
         </div>
-        <div className="btns">
+        <div className="form-btns">
           <input
+            className="submit-btn"
             type="submit"
             value={"Submit"}
             onClick={() => {
@@ -49,6 +68,7 @@ function FormHandler() {
             }}
           />
           <input
+            className="draft-btn"
             type="submit"
             value={"Save to Draft"}
             onClick={() => {
