@@ -1,11 +1,34 @@
 const express = require("express");
 const router = express.Router();
 const Schemas = require("../Schemas");
-
 // const multer = require("multer");
 
 const post = Schemas.Posts;
 const draft = Schemas.Drafts;
+// const imagesData = Schemas.Image;
+
+//multer config
+
+// const Storage = multer.diskStorage({
+//   destination: "images",
+//   filename: (req, file, callback) => {
+//     callback(null, `${Date.now()}_${file.originalname}`);
+//   },
+// });
+// const upload = multer({ storage: Storage }).single("file");
+// router.post("/uploadimg", (req, res) => {
+//   upload(req, res, (err) => {
+//     if (err) {
+//       return res.json({ success: false, err });
+//     }
+//     return res.json({
+//       success: true,
+//       url: res.req.file.path,
+//       fileName: res.req.file.filename,
+//     });
+//   });
+// });
+
 //get all posts to display in all post page
 router.get("/posts", async (req, res) => {
   const myPosts = await post.find({}).exec((err, postData) => {
@@ -21,6 +44,20 @@ router.get("/posts", async (req, res) => {
 //get certain post to display in each blog post page
 
 router.get("/post/:id", async (req, res) => {
+  const myPosts = await post
+    .findById(`${req.params.id}`)
+    .exec((err, postData) => {
+      if (err) throw err;
+      if (postData) {
+        res.end(JSON.stringify(postData));
+      } else {
+        res.end();
+      }
+    });
+});
+//get certain post to display in update post page
+
+router.get("/updatepost/:id", async (req, res) => {
   const myPosts = await post
     .findById(`${req.params.id}`)
     .exec((err, postData) => {
@@ -59,19 +96,19 @@ router.post("/addpost", async (req, res) => {
 });
 
 //get post by id and update it
-router.put("/update/:id", async (req, res) => {
+router.post("/update/:id", async (req, res) => {
   const posts = req.body.postInput;
   const title = req.body.titleInput;
   const description = req.body.description;
 
-  post.findById(req.parmas.id).then((editedPost) => {
+  post.findByIdAndUpdate(req.params.id).then((editedPost) => {
     editedPost.posts = posts;
     editedPost.title = title;
     editedPost.description = description;
 
     editedPost
       .save()
-      .then(() => res.json("Edited"))
+      .then(() => res.redirect("/"))
       .catch((err) => res.status(400).json(`Error ${err}`));
   });
 });

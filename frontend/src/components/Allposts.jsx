@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import "../Styling/components/allItem.css";
-import { BsTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 function Allposts() {
   useEffect(() => {
     fetchItems();
@@ -22,10 +22,12 @@ function Allposts() {
                 className="all-img"
                 src="https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               />
-              <div className="all-description">
-                <h1 className="card-title">{item.title}</h1>
-                <p className="card-desc">{item.description}</p>
-              </div>
+              <Link to={`http://localhost:3000/post/${item._id}`}>
+                <div className="all-description">
+                  <h1 className="card-title">{item.title}</h1>
+                  <p className="card-desc">{item.description}</p>
+                </div>
+              </Link>
             </div>
             <div className="allpg-btn">
               <form
@@ -36,14 +38,13 @@ function Allposts() {
               >
                 <button className="delete-btn">delete</button>
               </form>
-              <form
-                action={`/delete/${item._id}?_method=DELETE`}
-                method="POST"
+              <Link
+                to={`/updatepost/${item._id}`}
                 className="form-edit
               "
               >
                 <button className="delete-btn">Edit</button>
-              </form>
+              </Link>
             </div>
           </div>
         );

@@ -3,6 +3,9 @@
 @import "../sassStyling/breakpoints";
 @import "../sassStyling/gridSystem";
 
+a:visited {
+  color: black;
+}
 .img-slider {
   display: block;
 }

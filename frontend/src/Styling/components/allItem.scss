@@ -15,30 +15,25 @@
   margin: $base-margin;
   width: 100%;
   border-bottom: $base-border-thickness solid $borderColor;
-  display: grid;
-  grid-template-columns: 94% 6%;
+
+  display: flex;
+  justify-content: space-between;
 }
 .main-padding {
   padding: $base-padding;
   display: flex;
   align-items: center;
-  grid-column-start: 1;
-  grid-column-end: 1;
 }
 .allpg-btn {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  grid-column-start: 2;
-  grid-column-end: 2;
 }
 .form-delete {
   display: inline;
-  max-width: $base-padding;
 }
 .form-edit {
   display: inline;
-  max-width: $base-padding;
 }
 .all-description {
   align-self: center;
@@ -50,7 +45,7 @@
   .all-img {
     display: inline-block;
     width: 70%;
-    height: 65%;
+    height: 75%;
   }
   .allpg-btn {
     display: none;
@@ -60,7 +55,7 @@
   .all-img {
     display: inline-block;
     width: 50%;
-    height: 80%;
+    height: 85%;
   }
   .allpg-btn {
     display: flex;
@@ -70,7 +65,7 @@
   .all-img {
     display: inline-block;
     width: 40%;
-    height: 70%;
+    height: 80%;
   }
   .allpg-btn {
     display: flex;
@@ -80,7 +75,7 @@
   .all-img {
     display: inline-block;
     width: 40%;
-    height: 80%;
+    height: 85%;
   }
   .allpg-btn {
     display: flex;

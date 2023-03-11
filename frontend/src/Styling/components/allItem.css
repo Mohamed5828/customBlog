@@ -47,34 +47,28 @@ html {
   margin: 0.75rem;
   width: 100%;
   border-bottom: 1px solid grey;
-  display: grid;
-  grid-template-columns: 94% 6%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .main-padding {
   padding: 0.75rem;
   display: flex;
   align-items: center;
-  grid-column-start: 1;
-  grid-column-end: 1;
 }
 
 .allpg-btn {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  grid-column-start: 2;
-  grid-column-end: 2;
 }
 
 .form-delete {
   display: inline;
-  max-width: 0.75rem;
 }
 
 .form-edit {
   display: inline;
-  max-width: 0.75rem;
 }
 
 .all-description {
@@ -87,7 +81,7 @@ html {
   .all-img {
     display: inline-block;
     width: 70%;
-    height: 65%;
+    height: 75%;
   }
   .allpg-btn {
     display: none;
@@ -97,7 +91,7 @@ html {
   .all-img {
     display: inline-block;
     width: 50%;
-    height: 80%;
+    height: 85%;
   }
   .allpg-btn {
     display: flex;
@@ -107,7 +101,7 @@ html {
   .all-img {
     display: inline-block;
     width: 40%;
-    height: 70%;
+    height: 80%;
   }
   .allpg-btn {
     display: flex;
@@ -117,7 +111,7 @@ html {
   .all-img {
     display: inline-block;
     width: 40%;
-    height: 80%;
+    height: 85%;
   }
   .allpg-btn {
     display: flex;

@@ -26,3 +26,6 @@
   @include btn($primary);
   margin: $base-margin;
 }
+.submit-newsletter {
+  @include btn($primary);
+}

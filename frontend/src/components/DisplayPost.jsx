@@ -14,7 +14,7 @@ function DisplayPost() {
     const items = await data.json();
     setItemData(items);
   }
-  console.log(id);
+
   function innerHtml() {
     // itemData.map((item) => {
     // console.log(itemData[0].posts);

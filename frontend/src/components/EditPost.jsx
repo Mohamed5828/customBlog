@@ -1,28 +1,45 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import TextEditor from "./TextEditor";
-import "../Styling/components/btn.css";
-import "../Styling/components/writePost.css";
+import { useParams } from "react-router-dom";
 
-function FormHandler() {
+function EditPost() {
+  useEffect(() => {
+    fetchItems();
+  }, []);
+  const [itemData, setItemData] = useState();
+  const [formData, setFormData] = useState({ title: "", postDescription: "" });
   const [postData, setPostData] = useState("");
 
-  const [publish, setPublish] = useState(false);
-  const [formData, setFormData] = useState({
-    title: "",
-    postDescription: "",
-  });
+  const { id } = useParams();
+
+  async function fetchItems() {
+    const data = await fetch(`/post/${id}`);
+    const items = await data.json();
+    setItemData(items);
+  }
+
+  useEffect(() => {
+    if (itemData == null) return;
+    setFormData({
+      title: `${itemData.title}`,
+      postDescription: `${itemData.description}`,
+    });
+  }, [itemData]);
+  useEffect(() => {
+    if (itemData == null) return;
+    setPostData(itemData.posts);
+  }, [itemData]);
   function handleChange(event) {
     setFormData((prevFormData) => {
       return { ...prevFormData, [event.target.name]: event.target.value };
     });
-    console.log(formData);
-    console.log(postData);
   }
+  //   console.log(postData);
 
   return (
     <div className="write-container ">
-      <form method="POST" action={publish === true ? "/addpost" : "/adddraft"}>
+      <form method="POST" action={`/update/${id}?_method=PUT`}>
         <input type="hidden" name="postInput" value={postData} />
         <input type="hidden" name="titleInput" value={formData.title} />
         <input
@@ -56,30 +73,15 @@ function FormHandler() {
             onChange={handleChange}
           />
           <div className="editor">
-            <TextEditor setPostData={setPostData} />
+            <TextEditor setPostData={setPostData} postData={postData} />
           </div>
         </div>
         <div className="form-btns">
-          <input
-            className="submit-btn"
-            type="submit"
-            value={"Submit"}
-            onClick={() => {
-              setPublish(true);
-            }}
-          />
-          <input
-            className="draft-btn"
-            type="submit"
-            value={"Save to Draft"}
-            onClick={() => {
-              setPublish(false);
-            }}
-          />
+          <input className="submit-btn" type="submit" value={"Update"} />
         </div>
       </form>
     </div>
   );
 }
 
-export default FormHandler;
+export default EditPost;

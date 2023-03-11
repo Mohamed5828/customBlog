@@ -409,3 +409,13 @@ html {
   color: black;
   margin: 0.75rem;
 }
+
+.submit-newsletter {
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  border: 0;
+  padding: 0.75rem;
+  background-color: #c3bef0;
+  color: black;
+}

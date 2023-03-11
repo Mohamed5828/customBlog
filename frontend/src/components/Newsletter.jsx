@@ -21,7 +21,7 @@ function Newsletter() {
         name="email"
         onChange={handleChange}
       />
-      <input className="submit" type="submit" value={"Submit"} />
+      <input className="submit-newsletter" type="submit" value={"Submit"} />
     </div>
   );
 }

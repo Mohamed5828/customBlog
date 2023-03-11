@@ -400,6 +400,10 @@ html {
     width: 100%;
   }
 }
+a:visited {
+  color: black;
+}
+
 .img-slider {
   display: block;
 }
