@@ -8,6 +8,7 @@ import Allposts from "./components/Allposts";
 import DraftPost from "./components/DraftPost";
 import PostSubmitted from "./components/PostSubmitted";
 import EditPost from "./components/EditPost";
+import PorgressBar from "./components/PorgressBar";
 
 function App() {
   return (
@@ -19,7 +20,15 @@ function App() {
         <Route path="/documents/:id" element={<FormHandler />} />
         <Route path="/update/:id" element={<FormHandler />} />
         <Route path="/" element={<HomePage />} />
-        <Route path="/post/:id" element={<DisplayPost />} />
+        <Route
+          path="/post/:id"
+          element={
+            <>
+              <PorgressBar />
+              <DisplayPost />
+            </>
+          }
+        />
         <Route path="/updatepost/:id" element={<EditPost />} />
         <Route path="/postsubmitted" element={<PostSubmitted />} />
       </Routes>

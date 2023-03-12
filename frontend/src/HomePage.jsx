@@ -51,7 +51,9 @@ const HomePage = () => {
                         src="https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                       />
                       <h1 className="card-title">{item.title}</h1>
-                      <p className="card-desc">{item.description}</p>
+                      <div className="card-info">
+                        <p className="card-desc">{item.description}</p>
+                      </div>
                     </div>
                   </Link>
                 </div>

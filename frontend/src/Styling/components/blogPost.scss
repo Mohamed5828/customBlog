@@ -1,7 +1,6 @@
 @import "../sassStyling/colors";
 @import "../sassStyling/variables";
 @import "../sassStyling/breakpoints";
-// @import "../sassStyling/gridSystem";
 
 .post-container {
   @extend %container;
@@ -13,4 +12,25 @@
   padding: $base-padding;
   max-width: 45rem;
   background-color: $backgroundSecondary;
+}
+
+@include xs {
+  .post-content {
+    min-width: 90%;
+  }
+}
+@include sm {
+  .post-content {
+    min-width: 80%;
+  }
+}
+@include md {
+  .post-content {
+    min-width: 70%;
+  }
+}
+@include lg {
+  .post-content {
+    min-width: 65%;
+  }
 }

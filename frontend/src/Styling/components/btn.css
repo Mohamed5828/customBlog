@@ -383,9 +383,15 @@ html {
   display: inline-block;
   border: 0;
   padding: 0.75rem;
-  background-color: #c3bef0;
+  background-color: #cca8e9;
+  line-height: 1;
   color: black;
+  transition: 0.25s;
   padding: 0.75rem 1.5rem;
+}
+.delete-btn:hover, .delete-btn:focus {
+  border-color: #c3bef0;
+  color: #fff;
 }
 
 .submit-btn {
@@ -394,9 +400,15 @@ html {
   display: inline-block;
   border: 0;
   padding: 0.75rem;
-  background-color: #c3bef0;
+  background-color: #cca8e9;
+  line-height: 1;
   color: black;
+  transition: 0.25s;
   margin: 0.75rem;
+}
+.submit-btn:hover, .submit-btn:focus {
+  border-color: #c3bef0;
+  color: #fff;
 }
 
 .draft-btn {
@@ -405,9 +417,15 @@ html {
   display: inline-block;
   border: 0;
   padding: 0.75rem;
-  background-color: #c3bef0;
+  background-color: #cca8e9;
+  line-height: 1;
   color: black;
+  transition: 0.25s;
   margin: 0.75rem;
+}
+.draft-btn:hover, .draft-btn:focus {
+  border-color: #c3bef0;
+  color: #fff;
 }
 
 .submit-newsletter {
@@ -416,6 +434,56 @@ html {
   display: inline-block;
   border: 0;
   padding: 0.75rem;
-  background-color: #c3bef0;
+  background-color: #cca8e9;
+  line-height: 1;
   color: black;
+  transition: 0.25s;
+}
+.submit-newsletter:hover, .submit-newsletter:focus {
+  border-color: #c3bef0;
+  color: #fff;
+}
+
+.fill:hover,
+.fill:focus {
+  box-shadow: inset 0 0 0 2em #c3bef0;
+}
+
+.pulse:hover,
+.pulse:focus {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em transparent;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #c3bef0;
+  }
+}
+.close:hover,
+.close:focus {
+  box-shadow: inset -3.5em 0 0 0 #c3bef0, inset 3.5em 0 0 0 #c3bef0;
+}
+
+.raise:hover,
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em #c3bef0;
+  transform: translateY(-0.25em);
+}
+
+.up:hover,
+.up:focus {
+  box-shadow: inset 0 -3.25em 0 0 #c3bef0;
+}
+
+.sliding:hover,
+.sliding:focus {
+  box-shadow: inset 6.5em 0 0 0 red;
+}
+
+.offset {
+  box-shadow: 0.3em 0.3em 0 0 var(--color), inset 0.3em 0.3em 0 0 var(--color);
+}
+.offset:hover, .offset:focus {
+  box-shadow: 0 0 0 0 #c3bef0, inset 6em 3.5em 0 0 #c3bef0;
 }/*# sourceMappingURL=btn.css.map */

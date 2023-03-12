@@ -24,8 +24,8 @@ function Allposts() {
               />
               <Link to={`http://localhost:3000/post/${item._id}`}>
                 <div className="all-description">
-                  <h1 className="card-title">{item.title}</h1>
-                  <p className="card-desc">{item.description}</p>
+                  <h1 className="item-title">{item.title}</h1>
+                  <p className="item-desc">{item.description}</p>
                 </div>
               </Link>
             </div>
@@ -36,14 +36,14 @@ function Allposts() {
                 className="form-delete
               "
               >
-                <button className="delete-btn">delete</button>
+                <button className="delete-btn sliding">delete</button>
               </form>
               <Link
                 to={`/updatepost/${item._id}`}
                 className="form-edit
               "
               >
-                <button className="delete-btn">Edit</button>
+                <button className="delete-btn pulse">Edit</button>
               </Link>
             </div>
           </div>

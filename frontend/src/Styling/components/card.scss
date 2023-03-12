@@ -5,13 +5,63 @@
 @import "../sassStyling/gridSystem";
 @mixin card() {
   display: inline-block;
-  padding: $base-padding * 2;
   border: $base-border-thickness solid #fff;
-  box-shadow: $base-box-shadow;
+  // box-shadow: $base-box-shadow;
   border-radius: math.div($base-border-radius, 2);
   background-color: $backgroundSecondary;
 }
 
 .cards {
   @include card();
+  position: relative;
+  transition: 0.4s ease-out;
+  box-shadow: 0px 7px 10px rgba(rgb(109, 72, 209), 0.5);
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+    .card-info {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: math.div($base-border-radius, 2);
+    background: rgba(black, 0.6);
+    z-index: 2;
+    transition: 0.5s;
+    opacity: 0;
+  }
+}
+.card-img {
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  top: 0;
+  left: 0;
+  border-radius: math.div($base-border-radius, 2);
+}
+.card-info {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+  color: white;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: 0.5s;
+}
+.card-title {
+  margin: $base-margin;
+}
+.card-desc {
+  margin: $base-margin * 0.5;
+  letter-spacing: 1px;
 }
