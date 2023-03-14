@@ -8,7 +8,7 @@
   box-shadow: $base-box-shadow;
   background-color: $navbarBackground;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
 
   .site-title {
     font-size: $large-font-size;
@@ -34,4 +34,8 @@
 }
 .navbar li a :hover {
   opacity: 0.8;
+}
+
+.search-bar {
+  @extend %input-field;
 }

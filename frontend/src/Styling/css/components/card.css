@@ -435,4 +435,6 @@ html {
 .card-desc {
   margin: 0.375rem;
   letter-spacing: 1px;
+  position: absolute;
+  top: -250px;
 }

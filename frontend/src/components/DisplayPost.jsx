@@ -8,6 +8,8 @@ function DisplayPost() {
     fetchItems();
   }, []);
   const { id } = useParams();
+  console.log(id);
+
   const [itemData, setItemData] = useState([""]);
   async function fetchItems() {
     const data = await fetch(`/post/${id}`);

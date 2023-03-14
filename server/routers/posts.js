@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Schemas = require("../Schemas");
-// const multer = require("multer");
+const multer = require("multer");
 
 const post = Schemas.Posts;
 const draft = Schemas.Drafts;
@@ -9,25 +9,25 @@ const draft = Schemas.Drafts;
 
 //multer config
 
-// const Storage = multer.diskStorage({
-//   destination: "images",
-//   filename: (req, file, callback) => {
-//     callback(null, `${Date.now()}_${file.originalname}`);
-//   },
-// });
-// const upload = multer({ storage: Storage }).single("file");
-// router.post("/uploadimg", (req, res) => {
-//   upload(req, res, (err) => {
-//     if (err) {
-//       return res.json({ success: false, err });
-//     }
-//     return res.json({
-//       success: true,
-//       url: res.req.file.path,
-//       fileName: res.req.file.filename,
-//     });
-//   });
-// });
+const Storage = multer.diskStorage({
+  destination: "images",
+  filename: (req, file, callback) => {
+    callback(null, `${Date.now()}_${file.originalname}`);
+  },
+});
+const upload = multer({ storage: Storage }).single("file");
+router.post("/uploadimg", (req, res) => {
+  upload(req, res, (err) => {
+    if (err) {
+      return res.json({ success: false, err });
+    }
+    return res.json({
+      success: true,
+      url: res.req.file.path,
+      fileName: res.req.file.filename,
+    });
+  });
+});
 
 //get all posts to display in all post page
 router.get("/posts", async (req, res) => {
@@ -39,6 +39,22 @@ router.get("/posts", async (req, res) => {
       res.end();
     }
   });
+});
+
+//searching for post by title
+
+router.get("/postsearch/:title", async (req, res) => {
+  console.log(`${req.params.title}`);
+  const myPosts = await post
+    .find({ title: `${req.params.title}` })
+    .exec((err, postData) => {
+      if (err) throw err;
+      if (postData) {
+        res.end(JSON.stringify(postData));
+      } else {
+        res.end();
+      }
+    });
 });
 
 //get certain post to display in each blog post page

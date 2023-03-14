@@ -44,8 +44,8 @@
 @include xs {
   .all-img {
     display: inline-block;
-    width: 70%;
-    height: 75%;
+    width: 120px;
+    height: 100px;
   }
   .allpg-btn {
     display: none;
@@ -54,8 +54,8 @@
 @include sm {
   .all-img {
     display: inline-block;
-    width: 50%;
-    height: 85%;
+    width: 150px;
+    height: 120px;
   }
   .allpg-btn {
     display: flex;
@@ -64,14 +64,24 @@
 @include md {
   .all-img {
     display: inline-block;
-    width: 40%;
-    height: 80%;
+    width: 250px;
+    height: 200px;
   }
   .allpg-btn {
     display: flex;
   }
 }
 @include lg {
+  .all-img {
+    display: inline-block;
+    width: 350px;
+    height: 300px;
+  }
+  .allpg-btn {
+    display: flex;
+  }
+}
+@include xl {
   .all-img {
     display: inline-block;
     width: 40%;
@@ -81,6 +91,7 @@
     display: flex;
   }
 }
+
 //font reduce
 @include xs {
   .all-description {

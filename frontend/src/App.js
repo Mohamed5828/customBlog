@@ -9,6 +9,7 @@ import DraftPost from "./components/DraftPost";
 import PostSubmitted from "./components/PostSubmitted";
 import EditPost from "./components/EditPost";
 import PorgressBar from "./components/PorgressBar";
+import SearchResults from "./components/SearchResults";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/allposts" element={<Allposts />} />
+        <Route path="/postsearch/:title" element={<SearchResults />} />
         <Route path="/drafts" element={<DraftPost />} />
         <Route path="/documents/:id" element={<FormHandler />} />
         <Route path="/update/:id" element={<FormHandler />} />

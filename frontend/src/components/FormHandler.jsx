@@ -5,6 +5,8 @@ import "../Styling/components/btn.css";
 import "../Styling/components/writePost.css";
 
 function FormHandler() {
+  const [files, setFiles] = useState([]);
+
   const [postData, setPostData] = useState("");
 
   const [publish, setPublish] = useState(false);
@@ -12,6 +14,12 @@ function FormHandler() {
     title: "",
     postDescription: "",
   });
+  function onFilesChange(file) {
+    setFiles((prevFiles) => {
+      return { ...prevFiles, file };
+    });
+    console.log(files);
+  }
   function handleChange(event) {
     setFormData((prevFormData) => {
       return { ...prevFormData, [event.target.name]: event.target.value };
@@ -56,7 +64,11 @@ function FormHandler() {
             onChange={handleChange}
           />
           <div className="editor">
-            <TextEditor setPostData={setPostData} />
+            <TextEditor
+              setPostData={setPostData}
+              postData={postData}
+              onFilesChange={onFilesChange}
+            />
           </div>
         </div>
         <div className="form-btns">

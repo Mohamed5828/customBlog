@@ -80,8 +80,8 @@ html {
 @media (min-width: 0) {
   .all-img {
     display: inline-block;
-    width: 70%;
-    height: 75%;
+    width: 120px;
+    height: 100px;
   }
   .allpg-btn {
     display: none;
@@ -90,8 +90,8 @@ html {
 @media (min-width: 480px) {
   .all-img {
     display: inline-block;
-    width: 50%;
-    height: 85%;
+    width: 150px;
+    height: 120px;
   }
   .allpg-btn {
     display: flex;
@@ -100,14 +100,24 @@ html {
 @media (min-width: 720px) {
   .all-img {
     display: inline-block;
-    width: 40%;
-    height: 80%;
+    width: 250px;
+    height: 200px;
   }
   .allpg-btn {
     display: flex;
   }
 }
 @media (min-width: 960px) {
+  .all-img {
+    display: inline-block;
+    width: 350px;
+    height: 300px;
+  }
+  .allpg-btn {
+    display: flex;
+  }
+}
+@media (min-width: 1200px) {
   .all-img {
     display: inline-block;
     width: 40%;

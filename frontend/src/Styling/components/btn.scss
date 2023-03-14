@@ -36,6 +36,9 @@
 .submit-newsletter {
   @include btn($secondary);
 }
+.search-btn {
+  @include btn($secondary);
+}
 
 //btns hover effect
 

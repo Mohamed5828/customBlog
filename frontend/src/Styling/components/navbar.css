@@ -33,12 +33,21 @@ html {
   box-sizing: border-box;
 }
 
+.search-bar {
+  padding: 0.375rem;
+  border: none;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+  width: 70%;
+  max-width: 250px;
+  min-width: 150px;
+}
+
 .navbar {
   padding: 1.125rem;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
   background-color: #112d4e;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
 }
 .navbar .site-title {
   font-size: 1.5rem;

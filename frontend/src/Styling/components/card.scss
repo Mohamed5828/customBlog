@@ -64,4 +64,6 @@
 .card-desc {
   margin: $base-margin * 0.5;
   letter-spacing: 1px;
+  position: absolute;
+  top: -250px;
 }

@@ -2,11 +2,13 @@ import React from "react";
 import "../Styling/components/navbar.css";
 import { v4 as uuidV4 } from "uuid";
 import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 function Navbar() {
   return (
     <header className="navbar">
       <h1 className="site-title">Blog</h1>
+      <SearchBar />
       <nav>
         <li>
           <Link to={""}>Home</Link>
