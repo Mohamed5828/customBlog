@@ -2,8 +2,31 @@ import React, { useCallback, useEffect, useState, useRef } from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 export default function TextEditor({ setPostData, postData }) {
+  const [quill, setQuill] = useState();
+  const { id } = useParams();
+  const inputFile = useRef(null);
+  const [imgURL, setImgURL] = useState([]);
+
+  useEffect(() => {
+    if (quill == null) return;
+    if (postData == null) {
+      quill.root.innerHTML = "";
+      return;
+    }
+    if (quill.root.innerHTML === postData) return;
+    quill.root.innerHTML = postData;
+  }, [quill, postData]);
+
+  useEffect(() => {
+    if (quill == null) return;
+    quill.on("text-change", (delta, oldDelta, source) => {
+      setPostData(quill.root.innerHTML);
+    });
+  }, [quill]);
+
   const TOOLBAR_OPTIONS = {
     container: [
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -21,17 +44,9 @@ export default function TextEditor({ setPostData, postData }) {
     },
   };
 
-  const inputFile = useRef(null);
-  const reactQuillRef = useRef(null);
-
-  // const handleChange = (event) => {
-  //   const fileUploaded = event.target.files[0];
-  //   console.log(fileUploaded);
-  // };
   function imageHandler() {
     inputFile.current.click();
   }
-  const [quill, setQuill] = useState();
   const BlockEmbed = Quill.import("blots/block/embed");
 
   class ImageBlot extends BlockEmbed {
@@ -69,46 +84,27 @@ export default function TextEditor({ setPostData, postData }) {
       };
       formData.append("file", file);
 
-      axios.post("/uploadimg", formData, config).then((response) => {
+      axios.post(`/uploadimg/${id}`, formData, config).then((response) => {
         if (response.data.success) {
           quill.focus();
-
           let range = quill.getSelection();
           let position = range ? range.index : 0;
 
-          //First put the image in the node server and then put it in the src below here
           // Go to the image blot and create an image, take the src and alt from the footer, and put it in the editorHTML.
           quill.insertEmbed(position, "image", {
-            src: "http://localhost:3000/" + response.data.url,
-            alt: response.data.fileName,
+            src: response.data.downloadURL,
+            alt: response.data.name,
           });
           quill.setSelection(position + 1);
-
-          // setImgFiles((prevFiles) => {
-          //   return [...prevFiles, file];
-          // });
+          setImgURL((prevURLs) => {
+            return [...prevURLs, response.data.downloadURL];
+          });
         } else {
           return alert("failed to upload file");
         }
       });
     }
   }
-  useEffect(() => {
-    if (quill == null) return;
-    if (postData == null) {
-      quill.root.innerHTML = "";
-      return;
-    }
-    if (quill.root.innerHTML === postData) return;
-    quill.root.innerHTML = postData;
-  }, [quill, postData]);
-
-  useEffect(() => {
-    if (quill == null) return;
-    quill.on("text-change", (delta, oldDelta, source) => {
-      setPostData(quill.root.innerHTML);
-    });
-  }, [quill]);
 
   const wrapperRef = useCallback((wrapper) => {
     if (wrapper == null) return;
@@ -135,6 +131,7 @@ export default function TextEditor({ setPostData, postData }) {
         onChange={insertImage}
         accept="image/*"
       />
+      <input type="hidden" name="imgsURL" value={imgURL} />
     </>
   );
 }

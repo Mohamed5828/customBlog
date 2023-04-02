@@ -129,7 +129,7 @@ html {
     width: 100%;
   }
 }
-@media (min-width: 480px) {
+@media (min-width: 580px) {
   .col-1-sm {
     box-sizing: border-box;
     flex-grow: 0;
@@ -385,6 +385,7 @@ html {
   position: relative;
   transition: 0.4s ease-out;
   box-shadow: 0px 7px 10px rgba(109, 72, 209, 0.5);
+  height: 300px;
 }
 .cards:hover:before {
   opacity: 1;
@@ -409,13 +410,12 @@ html {
 }
 
 .card-img {
-  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   position: relative;
-  top: 0;
+  top: 50%;
   left: 0;
-  border-radius: 10px;
+  transform: translateY(-50%);
 }
 
 .card-info {
@@ -437,5 +437,5 @@ html {
   margin: 0.375rem;
   letter-spacing: 1px;
   position: absolute;
-  top: -250px;
+  word-break: break-word;
 }/*# sourceMappingURL=card.css.map */

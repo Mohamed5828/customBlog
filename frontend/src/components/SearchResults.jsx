@@ -24,7 +24,11 @@ function SearchResults() {
             <div className="main-padding">
               <img
                 className="all-img"
-                src="https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src={
+                  item.imgs != ""
+                    ? item.imgs
+                    : "https://firebasestorage.googleapis.com/v0/b/blogimgupload-3998a.appspot.com/o/nothumb.jpg?alt=media&token=39ca3696-b50c-444f-b3e1-786b4cb0533b"
+                }
               />
               <Link to={`http://localhost:3000/post/${item._id}`}>
                 <div className="all-description">

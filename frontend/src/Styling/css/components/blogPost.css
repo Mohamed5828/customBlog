@@ -52,7 +52,7 @@ html {
     min-width: 90%;
   }
 }
-@media (min-width: 480px) {
+@media (min-width: 580px) {
   .post-content {
     min-width: 80%;
   }

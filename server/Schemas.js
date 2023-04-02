@@ -5,12 +5,14 @@ const blogPosts = new Schema({
   posts: { type: Object },
   title: { type: String },
   description: { type: String },
+  imgs: { type: Array },
 });
 
 const draftPosts = new Schema({
   drafts: { type: Object },
   title: { type: String },
   description: { type: String },
+  imgs: { type: Array },
 });
 
 const images = new Schema({

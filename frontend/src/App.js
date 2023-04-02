@@ -8,8 +8,10 @@ import Allposts from "./components/Allposts";
 import DraftPost from "./components/DraftPost";
 import PostSubmitted from "./components/PostSubmitted";
 import EditPost from "./components/EditPost";
-import PorgressBar from "./components/PorgressBar";
+import ProgressBar from "./components/ProgressBar";
 import SearchResults from "./components/SearchResults";
+import EditDraft from "./components/EditDraft";
+import DisplayDraft from "./components/DrisplayDraft";
 
 function App() {
   return (
@@ -26,12 +28,22 @@ function App() {
           path="/post/:id"
           element={
             <>
-              <PorgressBar />
+              <ProgressBar />
               <DisplayPost />
             </>
           }
         />
+        <Route
+          path="/draft/:id"
+          element={
+            <>
+              <ProgressBar />
+              <DisplayDraft />
+            </>
+          }
+        />
         <Route path="/updatepost/:id" element={<EditPost />} />
+        <Route path="/updatedraft/:id" element={<EditDraft />} />
         <Route path="/postsubmitted" element={<PostSubmitted />} />
       </Routes>
     </Router>

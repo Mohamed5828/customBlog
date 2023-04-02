@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import "../Styling/components/blogPost.css";
 import ProgressBar from "./ProgressBar";
 
-function DisplayPost() {
+function DisplayDraft() {
   useEffect(() => {
     fetchItems();
   }, []);
@@ -13,7 +13,7 @@ function DisplayPost() {
 
   const [itemData, setItemData] = useState([""]);
   async function fetchItems() {
-    const data = await fetch(`/post/${id}`);
+    const data = await fetch(`/draft/${id}`);
     const items = await data.json();
     setItemData(items);
   }
@@ -21,7 +21,7 @@ function DisplayPost() {
   function innerHtml() {
     // itemData.map((item) => {
     // console.log(itemData[0].posts);
-    return { __html: itemData.posts };
+    return { __html: itemData.drafts };
     // });
   }
 
@@ -35,4 +35,4 @@ function DisplayPost() {
   );
 }
 
-export default DisplayPost;
+export default DisplayDraft;

@@ -5,55 +5,49 @@ import "../src/Styling/components/home.css";
 import "../src/Styling/components/card.css";
 import "../src/Styling/components/btn.css";
 import { Link } from "react-router-dom";
-const slides = [
-  {
-    image:
-      "https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  },
-  {
-    image:
-      "https://cdn.pixabay.com/photo/2023/01/05/22/35/flower-7700011_960_720.jpg",
-  },
-  {
-    image:
-      "https://cdn.pixabay.com/photo/2023/02/06/01/14/superb-fairywren-7770904_960_720.jpg",
-  },
-];
 
 const HomePage = () => {
   useEffect(() => {
     fetchItems();
   }, []);
-  const [itemData, setItemData] = useState([""]);
+  const [itemData, setItemData] = useState([]);
   async function fetchItems() {
     const data = await fetch(`/posts`);
     const items = await data.json();
-    setItemData(items);
+    setItemData(items.slice(0, 6));
   }
-  // console.log(itemData);
+  console.log(itemData);
   return (
     <div>
       <div className="home-container">
-        <h1 className="header">Top Picks</h1>
+        <h1 className="header">Featured Topics</h1>
         <div className="img-slider">
-          <ImageSlider slides={slides} />
+          <ImageSlider slides={itemData} />
         </div>
         <div className="ltst-top">
           <h1 className="header">Latest Topics</h1>
           <div className="row gap-2">
             {itemData.map((item) => {
               return (
-                <div className="col-12-xs col-5-sm col-4-xl" key={item._id}>
+                <div className="col-11-xs col-5-sm col-4-xl" key={item._id}>
                   <Link to={`http://localhost:3000/post/${item._id}`}>
                     <div className="cards">
-                      <img
-                        className="card-img"
-                        src="https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                      />
-                      <h1 className="card-title">{item.title}</h1>
                       <div className="card-info">
-                        <p className="card-desc">{item.description}</p>
+                        <p className="card-desc">
+                          {item.description.slice(0, 200)}
+                        </p>
                       </div>
+                      <div className="img-container">
+                        <img
+                          className="card-img"
+                          src={
+                            item.imgs != ""
+                              ? item.imgs
+                              : "https://firebasestorage.googleapis.com/v0/b/blogimgupload-3998a.appspot.com/o/nothumb.jpg?alt=media&token=39ca3696-b50c-444f-b3e1-786b4cb0533b"
+                          }
+                        />
+                      </div>
+                      <h1 className="card-title">{item.title.slice(0, 25)}</h1>
                     </div>
                   </Link>
                 </div>

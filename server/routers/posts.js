@@ -2,30 +2,49 @@ const express = require("express");
 const router = express.Router();
 const Schemas = require("../Schemas");
 const multer = require("multer");
+const fs = require("fs");
+const {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} = require("firebase/storage");
+const firebase = require("firebase/app");
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBwKmYvl6eAKik33o-e7uAp_wS1m6wNVIY",
+  authDomain: "blogimgupload-3998a.firebaseapp.com",
+  projectId: "blogimgupload-3998a",
+  storageBucket: "blogimgupload-3998a.appspot.com",
+  messagingSenderId: "947780559632",
+  appId: "1:947780559632:web:e114389b99cf849a18fb95",
+};
+firebase.initializeApp(firebaseConfig);
+const storage = getStorage();
 
 const post = Schemas.Posts;
 const draft = Schemas.Drafts;
-// const imagesData = Schemas.Image;
 
 //multer config
 
-const Storage = multer.diskStorage({
-  destination: "images",
-  filename: (req, file, callback) => {
-    callback(null, `${Date.now()}_${file.originalname}`);
-  },
-});
-const upload = multer({ storage: Storage }).single("file");
-router.post("/uploadimg", (req, res) => {
-  upload(req, res, (err) => {
-    if (err) {
-      return res.json({ success: false, err });
-    }
-    return res.json({
-      success: true,
-      url: res.req.file.path,
-      fileName: res.req.file.filename,
-    });
+const Storage = multer.memoryStorage({});
+const upload = multer({ storage: Storage });
+router.post("/uploadimg/:id", upload.single("file"), async (req, res) => {
+  const storageRef = ref(storage, `${req.params.id}/${req.file.originalname}`);
+  const metadata = {
+    contentType: req.file.mimetype,
+  };
+  const snapshot = await uploadBytesResumable(
+    storageRef,
+    req.file.buffer,
+    metadata
+  );
+  const downloadUrl = await getDownloadURL(snapshot.ref);
+  return res.send({
+    success: true,
+    name: req.file.originalname,
+    type: req.file.mimetype,
+    downloadURL: downloadUrl,
   });
 });
 
@@ -92,10 +111,12 @@ router.post("/addpost", async (req, res) => {
   blogPost = req.body.postInput;
   const title = req.body.titleInput;
   const description = req.body.description;
+  const imgs = req.body.imgsURL;
   const newPost = new post({
     posts: blogPost,
     title: title,
     description: description,
+    imgs: imgs,
   });
   try {
     await newPost.save(async (err, newPostResult) => {
@@ -106,7 +127,6 @@ router.post("/addpost", async (req, res) => {
     });
   } catch {
     console.log(err);
-    res.redirect("/postsubmitted");
     res.end("post Failed");
   }
 });
@@ -153,10 +173,12 @@ router.post("/adddraft", async (req, res) => {
   const draftPost = req.body.postInput;
   const title = req.body.titleInput;
   const description = req.body.description;
+  const imgs = req.body.imgsURL;
   const newDraft = new draft({
     drafts: draftPost,
     title: title,
     description: description,
+    imgs: imgs,
   });
   try {
     await newDraft.save(async (err, newDraftResult) => {
@@ -170,9 +192,61 @@ router.post("/adddraft", async (req, res) => {
     res.end("draft Failed");
   }
 });
+
+router.get("/draft/:id", async (req, res) => {
+  const mydraft = await draft
+    .findById(`${req.params.id}`)
+    .exec((err, draftData) => {
+      if (err) throw err;
+      if (draftData) {
+        res.end(JSON.stringify(draftData));
+      } else {
+        res.end();
+      }
+    });
+});
+
+router.get("/updatedraft/:id", async (req, res) => {
+  const myDraft = await draft
+    .findById(`${req.params.id}`)
+    .exec((err, draftData) => {
+      if (err) throw err;
+      if (draftData) {
+        res.end(JSON.stringify(draftData));
+      } else {
+        res.end();
+      }
+    });
+});
+
 router.post("/deletedraft/:id", async (req, res) => {
   await draft.findByIdAndDelete(req.params.id);
   res.redirect("/");
+});
+
+router.post("/deletandaddpost/:id", async (req, res) => {
+  await draft.findByIdAndDelete(req.params.id);
+  blogPost = req.body.postInput;
+  const title = req.body.titleInput;
+  const description = req.body.description;
+  const imgs = req.body.imgsURL;
+  const newPost = new post({
+    posts: blogPost,
+    title: title,
+    description: description,
+    imgs: imgs,
+  });
+  try {
+    await newPost.save(async (err, newPostResult) => {
+      if (err) res.end("Error");
+      res.redirect("/postsubmitted");
+
+      res.end();
+    });
+  } catch {
+    console.log(err);
+    res.end("post Failed");
+  }
 });
 
 module.exports = router;

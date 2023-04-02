@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 const Bar = styled.div`
-  margin-top: 63px;
+  margin-top: 73px;
   position: fixed;
   height: 6px;
   border-radius: 0px 2px 0px 0px;
@@ -12,7 +12,7 @@ const Bar = styled.div`
     rgba(3, 9, 112, 1) 100%
   );
 `;
-function PorgressBar() {
+function ProgressBar() {
   const [width, setWidth] = useState(0);
   useEffect(() => {
     window.addEventListener("scroll", scrollHeight);
@@ -33,4 +33,4 @@ function PorgressBar() {
   );
 }
 
-export default PorgressBar;
+export default ProgressBar;

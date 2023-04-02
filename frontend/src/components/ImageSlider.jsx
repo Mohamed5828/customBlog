@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
+
+import { Link } from "react-router-dom";
 
 function ImageSlider(props) {
-  const [currentImg, setCurrentImg] = useState(0);
+  const [currentImg, setCurrentImg] = useState(1);
+  console.log();
   const length = props.slides.length;
   function nextSlide() {
     setCurrentImg((prevImg) =>
@@ -20,23 +22,33 @@ function ImageSlider(props) {
       {props.slides.map((slide, index) => {
         return (
           <div
-            className={index === currentImg ? "slide active" : "slide"}
+            className={
+              index === currentImg ? "slide fade active" : "slide fade"
+            }
             key={index}
-            onClick={() => {
-              console.log(index);
-            }}
+            onClick={() => {}}
           >
-            {index === currentImg && <img src={slide.image} className="img" />}
-            <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide} />
-            <FaArrowAltCircleRight
-              className="right-arrow"
-              onClick={nextSlide}
-            />
-            <div className="img-description">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Voluptatem labore molestias necessitatibus tempora magnam non
-              eligendi, atque amet nihil maiores adipisci eveniet impedit
-              inventore laboriosam quidem, voluptas vel quo sed?
+            <div className="s-image-container">
+              <Link to={`http://localhost:3000/post/${slide._id}`}>
+                {index === currentImg && (
+                  <img
+                    src={
+                      slide.imgs != ""
+                        ? slide.imgs
+                        : "https://firebasestorage.googleapis.com/v0/b/blogimgupload-3998a.appspot.com/o/nothumb.jpg?alt=media&token=39ca3696-b50c-444f-b3e1-786b4cb0533b"
+                    }
+                    className="img"
+                  />
+                )}
+              </Link>
+              <a className="left-arrow" onClick={prevSlide}>
+                &#10094;
+              </a>
+              <a className="right-arrow" onClick={nextSlide}>
+                &#10095;
+              </a>
+
+              <div className="img-description">{slide.description}</div>
             </div>
           </div>
         );
