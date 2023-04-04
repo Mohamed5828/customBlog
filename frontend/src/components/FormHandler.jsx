@@ -5,7 +5,7 @@ import "../Styling/components/btn.css";
 import "../Styling/components/writePost.css";
 
 function FormHandler() {
-  const [files, setFiles] = useState([]);
+  // const [files, setFiles] = useState([]);
 
   const [postData, setPostData] = useState("");
 
@@ -13,19 +13,24 @@ function FormHandler() {
   const [formData, setFormData] = useState({
     title: "",
     postDescription: "",
+    featured: false,
   });
 
-  function onFilesChange(file) {
-    setFiles((prevFiles) => {
-      return { ...prevFiles, file };
-    });
-    // console.log(files);
-  }
+  // function onFilesChange(file) {
+  //   setFiles((prevFiles) => {
+  //     return { ...prevFiles, file };
+  //   });
+  //   // console.log(files);
+  // }
   function handleChange(event) {
+    const { name, value, type, checked } = event.target;
     setFormData((prevFormData) => {
-      return { ...prevFormData, [event.target.name]: event.target.value };
+      return {
+        ...prevFormData,
+        [name]: type === "checkbox" ? checked : value,
+      };
     });
-    // console.log(formData);
+    console.log(formData);
     // console.log(postData);
   }
 
@@ -64,11 +69,18 @@ function FormHandler() {
             value={formData.postDescription}
             onChange={handleChange}
           />
+          <label htmlFor="featured">featured </label>
+          <input
+            type="checkbox"
+            name="featured"
+            value={formData.featured}
+            onChange={handleChange}
+          />
           <div className="editor">
             <TextEditor
               setPostData={setPostData}
               postData={postData}
-              onFilesChange={onFilesChange}
+              // onFilesChange={onFilesChange}
             />
           </div>
         </div>

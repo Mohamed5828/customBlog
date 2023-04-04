@@ -6,6 +6,7 @@ const blogPosts = new Schema({
   title: { type: String },
   description: { type: String },
   imgs: { type: Array },
+  featured: { type: Boolean },
 });
 
 const draftPosts = new Schema({
@@ -15,15 +16,10 @@ const draftPosts = new Schema({
   imgs: { type: Array },
 });
 
-const images = new Schema({
-  name: { type: String },
-  image: { data: Buffer, contentType: String },
-});
 const Posts = mongoose.model("posts", blogPosts, "posts");
-const Image = mongoose.model("images", images, "images");
 const Drafts = mongoose.model("draft", draftPosts, "draft");
 
-const blogData = { Posts: Posts, Drafts: Drafts, Image: Image };
+const blogData = { Posts: Posts, Drafts: Drafts };
 
 // module.exports = Posts;
 module.exports = blogData;

@@ -8,6 +8,7 @@ const {
   ref,
   uploadBytesResumable,
   getDownloadURL,
+  deleteObject,
 } = require("firebase/storage");
 const firebase = require("firebase/app");
 
@@ -30,7 +31,7 @@ const draft = Schemas.Drafts;
 const Storage = multer.memoryStorage({});
 const upload = multer({ storage: Storage });
 router.post("/uploadimg/:id", upload.single("file"), async (req, res) => {
-  const storageRef = ref(storage, `${req.params.id}/${req.file.originalname}`);
+  const storageRef = ref(storage, `${req.file.originalname}`);
   const metadata = {
     contentType: req.file.mimetype,
   };
@@ -112,11 +113,13 @@ router.post("/addpost", async (req, res) => {
   const title = req.body.titleInput;
   const description = req.body.description;
   const imgs = req.body.imgsURL;
+  const featured = req.body.featured;
   const newPost = new post({
     posts: blogPost,
     title: title,
     description: description,
     imgs: imgs,
+    featured: featured,
   });
   try {
     await newPost.save(async (err, newPostResult) => {
@@ -150,6 +153,12 @@ router.post("/update/:id", async (req, res) => {
 });
 
 router.post("/delete/:id", async (req, res) => {
+  // find a way to get to the imgs name used in the post to be deleted
+  // post.findById(req.params.id).then( (postToBeDeleted)=>{
+  //   const image = postToBeDeleted.imgs;
+  //   const storageRef = ref(storage, image);
+  //   deleteObject(storageRef)
+  // })
   await post.findByIdAndDelete(req.params.id);
   res.redirect("/");
 });

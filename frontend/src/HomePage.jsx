@@ -11,12 +11,24 @@ const HomePage = () => {
     fetchItems();
   }, []);
   const [itemData, setItemData] = useState([]);
+  const [featuredTopics, setFeaturedTopics] = useState([]);
   async function fetchItems() {
     const data = await fetch(`/posts`);
     const items = await data.json();
+    // items.forEach((item) => {
+    //   if (item.featured == true) {
+    //     setFeaturedTopics((topic) => {
+    //       return { ...topic, item };
+    //     });
+    //   }
+    // });
+    // setFeaturedTopics(featuredTopics.slice(0, 4));
     setItemData(items.slice(0, 6));
   }
-  console.log(itemData);
+  // const slides = Object.values(featuredTopics);
+  // console.log(slides);
+  // console.log(featuredTopics);
+
   return (
     <div>
       <div className="home-container">

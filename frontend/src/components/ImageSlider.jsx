@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function ImageSlider(props) {
-  const [currentImg, setCurrentImg] = useState(1);
-  console.log();
+  const [currentImg, setCurrentImg] = useState(0);
   const length = props.slides.length;
   function nextSlide() {
     setCurrentImg((prevImg) =>
