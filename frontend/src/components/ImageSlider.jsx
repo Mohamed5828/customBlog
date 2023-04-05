@@ -28,7 +28,7 @@ function ImageSlider(props) {
             onClick={() => {}}
           >
             <div className="s-image-container">
-              <Link to={`http://localhost:3000/post/${slide._id}`}>
+              <Link to={`/post/${slide._id}`}>
                 {index === currentImg && (
                   <img
                     src={

@@ -40,7 +40,7 @@ const HomePage = () => {
             {itemData.map((item) => {
               return (
                 <div className="col-11-xs col-5-sm col-4-xl" key={item._id}>
-                  <Link to={`http://localhost:3000/post/${item._id}`}>
+                  <Link to={`/post/${item._id}`}>
                     <div className="cards">
                       <div className="card-info">
                         <p className="card-desc">

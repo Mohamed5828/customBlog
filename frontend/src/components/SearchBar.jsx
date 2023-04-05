@@ -18,7 +18,7 @@ function SearchBar() {
         name="search"
         className="search-bar"
       />
-      <Link to={`http://localhost:3000/postsearch/${searchWord.search}`}>
+      <Link to={`/postsearch/${searchWord.search}`}>
         <button className="search-btn">Search</button>
       </Link>
     </div>
