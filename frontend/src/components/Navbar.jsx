@@ -7,7 +7,7 @@ import SearchBar from "./SearchBar";
 function Navbar() {
   return (
     <header className="navbar">
-      <h1 className="site-title">Blog</h1>
+      <h1 className="site-title">BLOG</h1>
       <SearchBar />
       <nav>
         <li>
