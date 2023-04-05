@@ -47,7 +47,7 @@ function EditPost() {
         action={
           submit === true
             ? `/deletandaddpost/${id}`
-            : `/editdraft/${id}?_method=PUT`
+            : `/update/draft/${id}?_method=PUT`
         }
       >
         <input type="hidden" name="postInput" value={postData} />

@@ -13,7 +13,7 @@ const HomePage = () => {
   const [itemData, setItemData] = useState([]);
   const [featuredTopics, setFeaturedTopics] = useState([]);
   async function fetchItems() {
-    const data = await fetch(`/posts`);
+    const data = await fetch(`/posts/post`);
     const items = await data.json();
 
     const slides = [];

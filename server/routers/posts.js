@@ -49,12 +49,22 @@ router.post("/uploadimg/:id", upload.single("file"), async (req, res) => {
   });
 });
 
+function typeChecker(reqType) {
+  if (reqType == "post") {
+    return post;
+  } else {
+    return draft;
+  }
+}
+
 //get all posts to display in all post page
-router.get("/posts", async (req, res) => {
-  const myPosts = await post.find({}).exec((err, postData) => {
+router.get("/posts/:type", async (req, res) => {
+  const Type = req.params.type;
+  let schemaCollection = typeChecker(Type);
+  const myData = await schemaCollection.find({}).exec((err, Data) => {
     if (err) throw err;
-    if (postData) {
-      res.end(JSON.stringify(postData));
+    if (Data) {
+      res.end(JSON.stringify(Data));
     } else {
       res.end();
     }
@@ -79,13 +89,15 @@ router.get("/postsearch/:title", async (req, res) => {
 
 //get certain post to display in each blog post page
 
-router.get("/post/:id", async (req, res) => {
-  const myPosts = await post
+router.get("/:type/:id", async (req, res) => {
+  const Type = req.params.type;
+  let schemaCollection = typeChecker(Type);
+  const myData = await schemaCollection
     .findById(`${req.params.id}`)
-    .exec((err, postData) => {
+    .exec((err, Data) => {
       if (err) throw err;
-      if (postData) {
-        res.end(JSON.stringify(postData));
+      if (Data) {
+        res.end(JSON.stringify(Data));
       } else {
         res.end();
       }
@@ -93,13 +105,15 @@ router.get("/post/:id", async (req, res) => {
 });
 //get certain post to display in update post page
 
-router.get("/updatepost/:id", async (req, res) => {
-  const myPosts = await post
+router.get("/updatetype/:type/:id", async (req, res) => {
+  const Type = req.params.type;
+  let schemaCollection = typeChecker(Type);
+  const myData = await schemaCollection
     .findById(`${req.params.id}`)
-    .exec((err, postData) => {
+    .exec((err, Data) => {
       if (err) throw err;
-      if (postData) {
-        res.end(JSON.stringify(postData));
+      if (Data) {
+        res.end(JSON.stringify(Data));
       } else {
         res.end();
       }
@@ -135,15 +149,19 @@ router.post("/addpost", async (req, res) => {
 });
 
 //get post by id and update it
-router.post("/update/:id", async (req, res) => {
-  const posts = req.body.postInput;
+router.post("/update/:type/:id", async (req, res) => {
+  const Type = req.params.type;
+  let schemaCollection = typeChecker(Type);
+  const post = req.body.postInput;
   const title = req.body.titleInput;
   const description = req.body.description;
+  const featured = req.body.featured;
 
-  post.findByIdAndUpdate(req.params.id).then((editedPost) => {
-    editedPost.posts = posts;
+  schemaCollection.findByIdAndUpdate(req.params.id).then((editedPost) => {
+    Type == "post" ? (editedPost.posts = post) : (editedPost.drafts = post);
     editedPost.title = title;
     editedPost.description = description;
+    editedPost.featured = featured;
 
     editedPost
       .save()
@@ -152,28 +170,17 @@ router.post("/update/:id", async (req, res) => {
   });
 });
 
-router.post("/delete/:id", async (req, res) => {
+router.post("/delete/:type/:id", async (req, res) => {
   // find a way to get to the imgs name used in the post to be deleted
   // post.findById(req.params.id).then( (postToBeDeleted)=>{
   //   const image = postToBeDeleted.imgs;
   //   const storageRef = ref(storage, image);
   //   deleteObject(storageRef)
   // })
-  await post.findByIdAndDelete(req.params.id);
+  const Type = req.params.type;
+  let schemaCollection = typeChecker(Type);
+  await schemaCollection.findByIdAndDelete(req.params.id);
   res.redirect("/");
-});
-
-//get all drafts to display in draft page
-
-router.get("/drafts", async (req, res) => {
-  const myDrafts = await draft.find({}).exec((err, draftData) => {
-    if (err) throw err;
-    if (draftData) {
-      res.end(JSON.stringify(draftData));
-    } else {
-      res.end();
-    }
-  });
 });
 
 //get data from the create post page and send it to the db
@@ -202,40 +209,9 @@ router.post("/adddraft", async (req, res) => {
   }
 });
 
-router.get("/draft/:id", async (req, res) => {
-  const mydraft = await draft
-    .findById(`${req.params.id}`)
-    .exec((err, draftData) => {
-      if (err) throw err;
-      if (draftData) {
-        res.end(JSON.stringify(draftData));
-      } else {
-        res.end();
-      }
-    });
-});
-
-router.get("/updatedraft/:id", async (req, res) => {
-  const myDraft = await draft
-    .findById(`${req.params.id}`)
-    .exec((err, draftData) => {
-      if (err) throw err;
-      if (draftData) {
-        res.end(JSON.stringify(draftData));
-      } else {
-        res.end();
-      }
-    });
-});
-
-router.post("/deletedraft/:id", async (req, res) => {
-  await draft.findByIdAndDelete(req.params.id);
-  res.redirect("/");
-});
-
 router.post("/deletandaddpost/:id", async (req, res) => {
   await draft.findByIdAndDelete(req.params.id);
-  blogPost = req.body.postInput;
+  const blogPost = req.body.postInput;
   const title = req.body.titleInput;
   const description = req.body.description;
   const imgs = req.body.imgsURL;

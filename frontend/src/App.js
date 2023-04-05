@@ -42,8 +42,8 @@ function App() {
             </>
           }
         />
-        <Route path="/updatepost/:id" element={<EditPost />} />
-        <Route path="/updatedraft/:id" element={<EditDraft />} />
+        <Route path="/updatetype/post/:id" element={<EditPost />} />
+        <Route path="/updatetype/draft/:id" element={<EditDraft />} />
         <Route path="/postsubmitted" element={<PostSubmitted />} />
       </Routes>
     </Router>

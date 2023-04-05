@@ -35,11 +35,11 @@ function EditPost() {
       return { ...prevFormData, [event.target.name]: event.target.value };
     });
   }
-  //   console.log(postData);
+  // console.log(itemData);
 
   return (
     <div className="write-container ">
-      <form method="POST" action={`/update/${id}?_method=PUT`}>
+      <form method="POST" action={`/update/post/${id}?_method=PUT`}>
         <input type="hidden" name="postInput" value={postData} />
         <input type="hidden" name="titleInput" value={formData.title} />
         <input

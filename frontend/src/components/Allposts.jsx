@@ -10,7 +10,7 @@ function Allposts() {
   }, []);
   const [itemData, setItemData] = useState([""]);
   async function fetchItems() {
-    const data = await fetch(`/posts`);
+    const data = await fetch(`/posts/post`);
     const items = await data.json();
     setItemData(items);
   }
@@ -51,14 +51,14 @@ function Allposts() {
               </div>
               <div className="allpg-btn">
                 <form
-                  action={`/delete/${item._id}?_method=DELETE`}
+                  action={`/delete/post/${item._id}?_method=DELETE`}
                   method="POST"
                   className="form-delete
               "
                 >
                   <button className="delete-btn sliding">delete</button>
                 </form>
-                <Link to={`/updatepost/${item._id}`} className="form-edit">
+                <Link to={`/updatetype/post/${item._id}`} className="form-edit">
                   <button className="delete-btn pulse">Edit</button>
                 </Link>
               </div>

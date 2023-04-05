@@ -8,7 +8,7 @@ function DraftPost() {
   }, []);
   const [itemData, setItemData] = useState([""]);
   async function fetchItems() {
-    const data = await fetch(`/drafts`);
+    const data = await fetch(`/posts/draft`);
     const items = await data.json();
     setItemData(items);
   }
@@ -46,14 +46,17 @@ function DraftPost() {
               </div>
               <div className="allpg-btn">
                 <form
-                  action={`/deletedraft/${item._id}?_method=DELETE`}
+                  action={`/delete/draft/${item._id}?_method=DELETE`}
                   method="POST"
                   className="form-delete
               "
                 >
                   <button className="delete-btn sliding">delete</button>
                 </form>
-                <Link to={`/updatedraft/${item._id}`} className="form-edit">
+                <Link
+                  to={`/updatetype/draft/${item._id}`}
+                  className="form-edit"
+                >
                   <button className="delete-btn pulse">Edit</button>
                 </Link>
               </div>
