@@ -15,26 +15,24 @@ const HomePage = () => {
   async function fetchItems() {
     const data = await fetch(`/posts`);
     const items = await data.json();
-    // items.forEach((item) => {
-    //   if (item.featured == true) {
-    //     setFeaturedTopics((topic) => {
-    //       return { ...topic, item };
-    //     });
-    //   }
-    // });
-    // setFeaturedTopics(featuredTopics.slice(0, 4));
+
+    const slides = [];
+    items.map((item) => {
+      if (item.featured === true) {
+        slides.push(item);
+      }
+    });
+    setFeaturedTopics(slides);
+
     setItemData(items.slice(0, 6));
   }
-  // const slides = Object.values(featuredTopics);
-  // console.log(slides);
-  // console.log(featuredTopics);
 
   return (
     <div>
       <div className="home-container">
         <h1 className="header">Featured Topics</h1>
         <div className="img-slider">
-          <ImageSlider slides={itemData} />
+          <ImageSlider slides={featuredTopics} />
         </div>
         <div className="ltst-top">
           <h1 className="header">Latest Topics</h1>
