@@ -11,19 +11,23 @@ app.use(express.json({ limit: "25mb" }));
 app.use(bodyParser.json());
 app.use("/", routesHandler);
 app.use(methodOverride("_method"));
-mongoose
-  .connect(process.env.DB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("DB Connected");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
+const connectDB = async () => {
+  mongoose
+    .connect(process.env.DB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then(() => {
+      console.log("DB Connected");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`server is running on port ${PORT}`);
+
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`server is running on port ${PORT}`);
+  });
 });
