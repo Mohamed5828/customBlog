@@ -11,10 +11,11 @@ function Allposts() {
   }, []);
   const [itemData, setItemData] = useState([""]);
   async function fetchItems() {
-    const data = await fetch(`/posts/post`);
+    const data = await fetch(URL + `/posts/post`);
     const items = await data.json();
     setItemData(items);
   }
+  console.log(URL + `/posts/post`);
   if (itemData.length == 0) {
     return (
       <div className="write-container">
