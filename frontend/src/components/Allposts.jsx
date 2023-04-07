@@ -3,6 +3,7 @@ import { useState } from "react";
 import "../Styling/components/allItem.css";
 import { Link } from "react-router-dom";
 import { v4 as uuidV4 } from "uuid";
+import URL from "../config";
 
 function Allposts() {
   useEffect(() => {
@@ -51,7 +52,7 @@ function Allposts() {
               </div>
               <div className="allpg-btn">
                 <form
-                  action={`/delete/post/${item._id}?_method=DELETE`}
+                  action={URL + `/delete/post/${item._id}?_method=DELETE`}
                   method="POST"
                   className="form-delete
               "
