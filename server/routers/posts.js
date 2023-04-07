@@ -27,9 +27,9 @@ const post = Schemas.Posts;
 const draft = Schemas.Drafts;
 
 let URL = "";
-process.env.NODE_ENV === "prod"
-  ? (URL = "https://mohameds-blog.adaptable.app")
-  : (URL = "");
+process.env.NODE_ENV === "mydev"
+  ? (URL = "")
+  : (URL = "https://mohameds-blog.adaptable.app");
 
 //multer config
 
