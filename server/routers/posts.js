@@ -76,7 +76,7 @@ router.get(URL + "/posts/:type", async (req, res) => {
   });
 });
 
-router.get(URL + "/enviroment", async (req, res) => {
+router.get("/enviroment", async (req, res) => {
   res.json({
     env: `Running in ${URL}`,
   });
