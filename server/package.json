@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "set NODE_ENV=prod&& nodemon server.js",
+    "start": "set NODE_ENV=prod&& node index.js",
     "devStart": "set NODE_ENV=mydev&& nodemon server.js",
     "client": "npm run start --prefix ../blog",
     "dev": "concurrently --kill-others-on-fail\"npm run server\" \"npm run client\"",
