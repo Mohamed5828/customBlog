@@ -26,11 +26,16 @@ const storage = getStorage();
 const post = Schemas.Posts;
 const draft = Schemas.Drafts;
 
+let URL = "";
+process.env.NODE_ENV === "prod"
+  ? (URL = "https://mohameds-blog.adaptable.app")
+  : (URL = "");
+
 //multer config
 
 const Storage = multer.memoryStorage({});
 const upload = multer({ storage: Storage });
-router.post("/uploadimg/:id", upload.single("file"), async (req, res) => {
+router.post(URL + "/uploadimg/:id", upload.single("file"), async (req, res) => {
   const storageRef = ref(storage, `${req.file.originalname}`);
   const metadata = {
     contentType: req.file.mimetype,
@@ -58,7 +63,7 @@ function typeChecker(reqType) {
 }
 
 //get all posts to display in all post page
-router.get("/posts/:type", async (req, res) => {
+router.get(URL + "/posts/:type", async (req, res) => {
   const Type = req.params.type;
   let schemaCollection = typeChecker(Type);
   const myData = await schemaCollection.find({}).exec((err, Data) => {
@@ -71,9 +76,15 @@ router.get("/posts/:type", async (req, res) => {
   });
 });
 
+router.get(URL + "/enviroment", async (req, res) => {
+  res.json({
+    env: `Running in ${URL}`,
+  });
+});
+
 //searching for post by title
 
-router.get("/postsearch/:title", async (req, res) => {
+router.get(URL + "/postsearch/:title", async (req, res) => {
   console.log(`${req.params.title}`);
   const myPosts = await post
     .find({ title: `${req.params.title}` })
@@ -89,7 +100,7 @@ router.get("/postsearch/:title", async (req, res) => {
 
 //get certain post to display in each blog post page
 
-router.get("/:type/:id", async (req, res) => {
+router.get(URL + "/:type/:id", async (req, res) => {
   const Type = req.params.type;
   let schemaCollection = typeChecker(Type);
   const myData = await schemaCollection
@@ -105,7 +116,7 @@ router.get("/:type/:id", async (req, res) => {
 });
 //get certain post to display in update post page
 
-router.get("/updatetype/:type/:id", async (req, res) => {
+router.get(URL + "/updatetype/:type/:id", async (req, res) => {
   const Type = req.params.type;
   let schemaCollection = typeChecker(Type);
   const myData = await schemaCollection
@@ -122,7 +133,7 @@ router.get("/updatetype/:type/:id", async (req, res) => {
 
 //get data from the create post page and send it to the db
 
-router.post("/addpost", async (req, res) => {
+router.post(URL + "/addpost", async (req, res) => {
   blogPost = req.body.postInput;
   const title = req.body.titleInput;
   const description = req.body.description;
@@ -138,7 +149,7 @@ router.post("/addpost", async (req, res) => {
   try {
     await newPost.save(async (err, newPostResult) => {
       if (err) res.end("Error");
-      res.redirect("/postsubmitted");
+      res.redirect(URL + "/postsubmitted");
 
       res.end();
     });
@@ -149,7 +160,7 @@ router.post("/addpost", async (req, res) => {
 });
 
 //get post by id and update it
-router.post("/update/:type/:id", async (req, res) => {
+router.post(URL + "/update/:type/:id", async (req, res) => {
   const Type = req.params.type;
   let schemaCollection = typeChecker(Type);
   const post = req.body.postInput;
@@ -165,12 +176,12 @@ router.post("/update/:type/:id", async (req, res) => {
 
     editedPost
       .save()
-      .then(() => res.redirect("/"))
+      .then(() => res.redirect(URL + "/"))
       .catch((err) => res.status(400).json(`Error ${err}`));
   });
 });
 
-router.post("/delete/:type/:id", async (req, res) => {
+router.post(URL + "/delete/:type/:id", async (req, res) => {
   // find a way to get to the imgs name used in the post to be deleted
   // post.findById(req.params.id).then( (postToBeDeleted)=>{
   //   const image = postToBeDeleted.imgs;
@@ -180,12 +191,12 @@ router.post("/delete/:type/:id", async (req, res) => {
   const Type = req.params.type;
   let schemaCollection = typeChecker(Type);
   await schemaCollection.findByIdAndDelete(req.params.id);
-  res.redirect("/");
+  res.redirect(URL + "/");
 });
 
 //get data from the create post page and send it to the db
 
-router.post("/adddraft", async (req, res) => {
+router.post(URL + "/adddraft", async (req, res) => {
   const draftPost = req.body.postInput;
   const title = req.body.titleInput;
   const description = req.body.description;
@@ -199,17 +210,17 @@ router.post("/adddraft", async (req, res) => {
   try {
     await newDraft.save(async (err, newDraftResult) => {
       if (err) res.end("Error");
-      res.redirect("/drafts");
+      res.redirect(URL + "/drafts");
       res.end();
     });
   } catch {
     console.log(err);
-    res.redirect("/drafts");
+    res.redirect(URL + "/drafts");
     res.end("draft Failed");
   }
 });
 
-router.post("/deletandaddpost/:id", async (req, res) => {
+router.post(URL + "/deletandaddpost/:id", async (req, res) => {
   await draft.findByIdAndDelete(req.params.id);
   const blogPost = req.body.postInput;
   const title = req.body.titleInput;
@@ -224,7 +235,7 @@ router.post("/deletandaddpost/:id", async (req, res) => {
   try {
     await newPost.save(async (err, newPostResult) => {
       if (err) res.end("Error");
-      res.redirect("/postsubmitted");
+      res.redirect(URL + "/postsubmitted");
 
       res.end();
     });
