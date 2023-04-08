@@ -15,6 +15,14 @@ function FormHandler() {
     postDescription: "",
     featured: false,
   });
+  function handleSubmit(event) {
+    if (formData.title.trim() !== "") {
+      console.log("Form submitted");
+    } else {
+      event.preventDefault();
+      alert("Cant Submit Post With No Title");
+    }
+  }
 
   // function onFilesChange(file) {
   //   setFiles((prevFiles) => {
@@ -36,7 +44,11 @@ function FormHandler() {
 
   return (
     <div className="write-container ">
-      <form method="POST" action={publish === true ? "/addpost" : "/adddraft"}>
+      <form
+        method="POST"
+        action={publish === true ? "/addpost" : "/adddraft"}
+        onSubmit={handleSubmit}
+      >
         <input type="hidden" name="postInput" value={postData} />
         <input type="hidden" name="titleInput" value={formData.title} />
         <input

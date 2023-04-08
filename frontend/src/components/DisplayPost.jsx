@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../Styling/components/blogPost.css";
-import ProgressBar from "./ProgressBar";
+import NotFound from "./NotFound";
 
 function DisplayPost() {
   useEffect(() => {
@@ -11,28 +11,28 @@ function DisplayPost() {
   const { id } = useParams();
   console.log(id);
 
-  const [itemData, setItemData] = useState([""]);
+  const [itemData, setItemData] = useState([]);
   async function fetchItems() {
     const data = await fetch(`/post/${id}`);
     const items = await data.json();
     setItemData(items);
   }
+  console.log(itemData);
 
   function innerHtml() {
-    // itemData.map((item) => {
-    // console.log(itemData[0].posts);
     return { __html: itemData.posts };
-    // });
   }
-
-  return (
-    <div className="post-container">
-      {/* <ProgressBar /> */}
-      <div className="post-content">
-        <div dangerouslySetInnerHTML={innerHtml()}></div>
+  if (itemData.length == 0) {
+    return <NotFound />;
+  } else {
+    return (
+      <div className="post-container">
+        <div className="post-content">
+          <div className="post-title">{itemData.title}</div>
+          <div dangerouslySetInnerHTML={innerHtml()}></div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
-
 export default DisplayPost;

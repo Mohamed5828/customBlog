@@ -80,9 +80,9 @@ router.get("/enviroment", async (req, res) => {
 //searching for post by title
 
 router.get("/postsearch/:title", async (req, res) => {
-  console.log(`${req.params.title}`);
+  // console.log(`${req.params.title}`);
   const myPosts = await post
-    .find({ title: `${req.params.title}` })
+    .find({ title: { $regex: req.params.title, $options: "i" } })
     .exec((err, postData) => {
       if (err) throw err;
       if (postData) {
@@ -118,7 +118,7 @@ router.get("/updatetype/:type/:id", async (req, res) => {
     .findById(`${req.params.id}`)
     .exec((err, Data) => {
       if (err) throw err;
-      if (Data) {
+      if (Data && Data != "") {
         res.end(JSON.stringify(Data));
       } else {
         res.end();
