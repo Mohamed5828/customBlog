@@ -5,6 +5,7 @@ import "../src/Styling/components/home.css";
 import "../src/Styling/components/card.css";
 import "../src/Styling/components/btn.css";
 import { Link } from "react-router-dom";
+import URL from "./config";
 
 const HomePage = () => {
   useEffect(() => {
@@ -13,7 +14,7 @@ const HomePage = () => {
   const [itemData, setItemData] = useState([]);
   const [featuredTopics, setFeaturedTopics] = useState([]);
   async function fetchItems() {
-    const data = await fetch(`/posts/post`);
+    const data = await fetch(URL + `/posts/post`);
     const itemReverse = await data.json();
     const items = itemReverse.reverse();
 
