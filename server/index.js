@@ -16,8 +16,8 @@ app.use(express.urlencoded({ limit: "25mb" }));
 app.use(express.json({ limit: "25mb" }));
 app.use(bodyParser.json());
 app.use("/", routesHandler);
-app.use(cors());
 app.use(methodOverride("_method"));
+app.use(cors());
 const connectDB = async () => {
   mongoose
     .connect(process.env.DB_URI, {
@@ -32,6 +32,7 @@ const connectDB = async () => {
     });
 };
 const PORT = process.env.PORT || 4000;
+console.log(app._router.stack);
 
 connectDB().then(() => {
   app.listen(PORT, () => {
