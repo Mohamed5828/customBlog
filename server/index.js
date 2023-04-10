@@ -6,17 +6,17 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const cors = require("cors");
 
-const corsOptions = {
-  origin: "*",
-  methods: ["GET", "POST", "DELETE", "UPDATE", "PUT"],
-};
+// const corsOptions = {
+//   origin: "*",
+//   methods: ["GET", "POST", "DELETE", "UPDATE", "PUT"],
+// };
 
 const app = express();
 app.use(express.urlencoded({ limit: "25mb" }));
 app.use(express.json({ limit: "25mb" }));
 app.use(bodyParser.json());
 app.use("/", routesHandler);
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(methodOverride("_method"));
 const connectDB = async () => {
   mongoose
