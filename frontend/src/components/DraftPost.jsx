@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import URL from "../config";
 
 function DraftPost() {
   useEffect(() => {
@@ -8,7 +9,7 @@ function DraftPost() {
   }, []);
   const [itemData, setItemData] = useState([""]);
   async function fetchItems() {
-    const data = await fetch(`/posts/draft`);
+    const data = await fetch(URL + `/posts/draft`);
     const items = await data.json();
     setItemData(items);
   }
@@ -37,7 +38,7 @@ function DraftPost() {
                       : "https://firebasestorage.googleapis.com/v0/b/blogimgupload-3998a.appspot.com/o/nothumb.jpg?alt=media&token=39ca3696-b50c-444f-b3e1-786b4cb0533b"
                   }
                 />
-                <Link to={`/draft/${item._id}`}>
+                <Link to={URL + `/draft/${item._id}`}>
                   <div className="all-description">
                     <h1 className="item-title">{item.title}</h1>
                     <p className="item-desc">{item.description}</p>
@@ -46,7 +47,7 @@ function DraftPost() {
               </div>
               <div className="allpg-btn">
                 <form
-                  action={`/delete/draft/${item._id}?_method=DELETE`}
+                  action={URL + `/delete/draft/${item._id}?_method=DELETE`}
                   method="POST"
                   className="form-delete
               "
@@ -54,7 +55,7 @@ function DraftPost() {
                   <button className="delete-btn sliding">delete</button>
                 </form>
                 <Link
-                  to={`/updatetype/draft/${item._id}`}
+                  to={URL + `/updatetype/draft/${item._id}`}
                   className="form-edit"
                 >
                   <button className="delete-btn pulse">Edit</button>

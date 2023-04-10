@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../Styling/components/blogPost.css";
 import NotFound from "./NotFound";
+import URL from "../config";
 
 function DisplayPost() {
   useEffect(() => {
@@ -13,7 +14,7 @@ function DisplayPost() {
 
   const [itemData, setItemData] = useState([]);
   async function fetchItems() {
-    const data = await fetch(`/post/${id}`);
+    const data = await fetch(URL + `/post/${id}`);
     const items = await data.json();
     setItemData(items);
   }

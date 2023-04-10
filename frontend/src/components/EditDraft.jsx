@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import TextEditor from "./TextEditor";
 import { useParams } from "react-router-dom";
+import URL from "../config";
 
 function EditPost() {
   useEffect(() => {
@@ -15,7 +16,7 @@ function EditPost() {
   const { id } = useParams();
 
   async function fetchItems() {
-    const data = await fetch(`/draft/${id}`);
+    const data = await fetch(URL + `/draft/${id}`);
     const items = await data.json();
     setItemData(items);
     console.log(items);
@@ -46,8 +47,8 @@ function EditPost() {
         method="POST"
         action={
           submit === true
-            ? `/deletandaddpost/${id}`
-            : `/update/draft/${id}?_method=PUT`
+            ? URL + `/deletandaddpost/${id}`
+            : URL + `/update/draft/${id}?_method=PUT`
         }
       >
         <input type="hidden" name="postInput" value={postData} />

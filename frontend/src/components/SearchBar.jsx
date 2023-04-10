@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import URL from "../config";
 
 function SearchBar() {
   const [searchWord, setSearchWord] = useState("");
@@ -19,9 +20,9 @@ function SearchBar() {
         className="search-bar"
       />
       <Link
-        to={`/postsearch/${searchWord.search}`}
+        to={URL + `/postsearch/${searchWord.search}`}
         onClick={() =>
-          (window.location.href = `/postsearch/${searchWord.search}`)
+          (window.location.href = URL + `/postsearch/${searchWord.search}`)
         }
       >
         <button className="search-btn">Search</button>

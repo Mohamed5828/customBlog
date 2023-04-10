@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../Styling/components/blogPost.css";
-import ProgressBar from "./ProgressBar";
 
 function DisplayDraft() {
   useEffect(() => {
@@ -13,7 +12,7 @@ function DisplayDraft() {
 
   const [itemData, setItemData] = useState([""]);
   async function fetchItems() {
-    const data = await fetch(`/draft/${id}`);
+    const data = await fetch(URL + `/draft/${id}`);
     const items = await data.json();
     setItemData(items);
   }
@@ -27,7 +26,6 @@ function DisplayDraft() {
 
   return (
     <div className="post-container">
-      {/* <ProgressBar /> */}
       <div className="post-content">
         <div dangerouslySetInnerHTML={innerHtml()}></div>
       </div>

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import TextEditor from "./TextEditor";
 import "../Styling/components/btn.css";
 import "../Styling/components/writePost.css";
+import URL from "../config";
 
 function FormHandler() {
   // const [files, setFiles] = useState([]);
@@ -46,7 +47,7 @@ function FormHandler() {
     <div className="write-container ">
       <form
         method="POST"
-        action={publish === true ? "/addpost" : "/adddraft"}
+        action={publish === true ? URL + "/addpost" : URL + "/adddraft"}
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="postInput" value={postData} />

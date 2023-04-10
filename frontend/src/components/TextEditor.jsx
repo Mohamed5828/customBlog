@@ -3,6 +3,7 @@ import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import URL from "../config";
 
 export default function TextEditor({ setPostData, postData }) {
   const [quill, setQuill] = useState();
@@ -84,25 +85,27 @@ export default function TextEditor({ setPostData, postData }) {
       };
       formData.append("file", file);
 
-      axios.post(`/uploadimg/${id}`, formData, config).then((response) => {
-        if (response.data.success) {
-          quill.focus();
-          let range = quill.getSelection();
-          let position = range ? range.index : 0;
+      axios
+        .post(URL + `/uploadimg/${id}`, formData, config)
+        .then((response) => {
+          if (response.data.success) {
+            quill.focus();
+            let range = quill.getSelection();
+            let position = range ? range.index : 0;
 
-          // Go to the image blot and create an image, take the src and alt from the footer, and put it in the editorHTML.
-          quill.insertEmbed(position, "image", {
-            src: response.data.downloadURL,
-            alt: response.data.name,
-          });
-          quill.setSelection(position + 1);
-          setImgURL((prevURLs) => {
-            return [...prevURLs, response.data.downloadURL];
-          });
-        } else {
-          return alert("failed to upload file");
-        }
-      });
+            // Go to the image blot and create an image, take the src and alt from the footer, and put it in the editorHTML.
+            quill.insertEmbed(position, "image", {
+              src: response.data.downloadURL,
+              alt: response.data.name,
+            });
+            quill.setSelection(position + 1);
+            setImgURL((prevURLs) => {
+              return [...prevURLs, response.data.downloadURL];
+            });
+          } else {
+            return alert("failed to upload file");
+          }
+        });
     }
   }
 
