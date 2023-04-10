@@ -6,18 +6,15 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const cors = require("cors");
 
-// const corsOptions = {
-//   origin: "*",
-//   methods: ["GET", "POST", "DELETE", "UPDATE", "PUT"],
-// };
-
 const app = express();
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json({ limit: "25mb" }));
 app.use(bodyParser.json());
+app.use(cors({ origin: "*" }));
 app.use("/", routesHandler);
 app.use(methodOverride("_method"));
-app.use(cors());
+
 const connectDB = async () => {
   mongoose
     .connect(process.env.DB_URI, {
@@ -31,8 +28,8 @@ const connectDB = async () => {
       console.log(err);
     });
 };
+
 const PORT = process.env.PORT || 4000;
-console.log(app._router.stack);
 
 connectDB().then(() => {
   app.listen(PORT, () => {
