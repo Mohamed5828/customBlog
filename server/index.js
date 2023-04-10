@@ -4,12 +4,18 @@ require("dotenv/config");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
+const cors = require("cors");
+
+const corsOptions = {
+  origin: "https://helpful-speculoos-4bda58.netlify.app",
+};
 
 const app = express();
 app.use(express.urlencoded({ limit: "25mb" }));
 app.use(express.json({ limit: "25mb" }));
 app.use(bodyParser.json());
 app.use("/", routesHandler);
+app.use(cors(corsOptions));
 app.use(methodOverride("_method"));
 const connectDB = async () => {
   mongoose
