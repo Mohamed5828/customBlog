@@ -419,6 +419,7 @@ a:visited {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  overflow: hidden;
 }
 
 .right-arrow {
@@ -448,8 +449,6 @@ a:visited {
 
 .s-image-container {
   position: relative;
-  width: 500px;
-  height: 300px;
   overflow: hidden;
 }
 
@@ -466,7 +465,7 @@ a:visited {
 }
 
 .slide.active {
-  display: block;
+  display: flex;
   transition-duration: 1s;
   transform: scale(1);
 }
@@ -496,4 +495,35 @@ a:visited {
   background-color: grey;
   height: 65%;
   overflow: hidden;
+}
+
+@media (min-width: 0) {
+  .s-image-container {
+    height: 210px;
+    width: 350px;
+  }
+}
+@media (min-width: 580px) {
+  .s-image-container {
+    height: 300px;
+    width: 500px;
+  }
+}
+@media (min-width: 720px) {
+  .s-image-container {
+    height: 300px;
+    width: 500px;
+  }
+}
+@media (min-width: 960px) {
+  .s-image-container {
+    height: 450px;
+    width: 750px;
+  }
+}
+@media (min-width: 1200px) {
+  .s-image-container {
+    height: 525px;
+    width: 875px;
+  }
 }

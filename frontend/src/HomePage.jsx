@@ -14,7 +14,8 @@ const HomePage = () => {
   const [featuredTopics, setFeaturedTopics] = useState([]);
   async function fetchItems() {
     const data = await fetch(`/posts/post`);
-    const items = await data.json();
+    const itemReverse = await data.json();
+    const items = itemReverse.reverse();
 
     const slides = [];
     items.map((item) => {

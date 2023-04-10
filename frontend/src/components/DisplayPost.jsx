@@ -30,6 +30,9 @@ function DisplayPost() {
         <div className="post-content">
           <div className="post-title">{itemData.title}</div>
           <div dangerouslySetInnerHTML={innerHtml()}></div>
+          <div className="time">
+            Post at: {itemData.updated_at.slice(0, 10)}
+          </div>
         </div>
       </div>
     );

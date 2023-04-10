@@ -5,25 +5,62 @@ import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
 function Navbar() {
+  function openSideMenu() {}
+
   return (
-    <header className="navbar">
-      <h1 className="site-title">BLOG</h1>
-      <SearchBar />
-      <nav>
-        <li>
-          <Link to={""}>Home</Link>
-        </li>
-        <li>
-          <Link to={"allposts"}>All Posts</Link>
-        </li>
-        <li>
-          <Link to={"drafts"}>Drafts</Link>
-        </li>
-        <li>
-          <Link to={`documents/${uuidV4()}`}>Write a Post</Link>
-        </li>
-      </nav>
-    </header>
+    <>
+      <header className="navbar">
+        <h1 className="site-title">BLOG</h1>
+        {/* <SearchBar /> */}
+        <nav>
+          <ul className="navbar-links">
+            <li>
+              <Link to={""}>Home</Link>
+            </li>
+            <li>
+              <Link to={"allposts"}>All Posts</Link>
+            </li>
+            <li>
+              <Link to={"drafts"}>Drafts</Link>
+            </li>
+            <li>
+              <Link to={"drafts"}>Search</Link>
+            </li>
+            <li>
+              <Link to={`documents/${uuidV4()}`}>Write a Post</Link>
+            </li>
+          </ul>
+          <button
+            id="sidebar-toggle"
+            className="navbar-menu"
+            onClick={openSideMenu}
+          >
+            Menu
+          </button>
+        </nav>
+      </header>
+      <div className="sidebar">
+        <button>close</button>
+        <div className="sidebar-content">
+          <div className="side-search">
+            <h4>Search for a post by title:</h4>
+            <SearchBar />
+          </div>
+          <li>
+            <Link to={""}>Home</Link>
+          </li>
+          <li>
+            <Link to={"allposts"}>All Posts</Link>
+          </li>
+          <li>
+            <Link to={"drafts"}>Drafts</Link>
+          </li>
+          <li>
+            <Link to={`documents/${uuidV4()}`}>Write a Post</Link>
+          </li>
+        </div>
+      </div>
+    </>
   );
 }
 

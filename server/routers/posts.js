@@ -62,6 +62,7 @@ router.get("/posts/:type", async (req, res) => {
   const Type = req.params.type;
   let schemaCollection = typeChecker(Type);
   const myData = await schemaCollection.find({}).exec((err, Data) => {
+    console.log(process.env.NODE_ENV);
     if (err) throw err;
     if (Data) {
       res.end(JSON.stringify(Data));
