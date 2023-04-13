@@ -11,7 +11,14 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json({ limit: "25mb" }));
 app.use(bodyParser.json());
-app.use(cors({ origin: "*" }));
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 200,
+  })
+);
 app.use("/", routesHandler);
 app.use(methodOverride("_method"));
 
