@@ -35,7 +35,7 @@ function SearchResults() {
                       : "https://firebasestorage.googleapis.com/v0/b/blogimgupload-3998a.appspot.com/o/nothumb.jpg?alt=media&token=39ca3696-b50c-444f-b3e1-786b4cb0533b"
                   }
                 />
-                <Link to={URL + `/post/${item._id}`}>
+                <Link to={`/post/${item._id}`}>
                   <div className="all-description">
                     <h1 className="item-title">{item.title}</h1>
                     <p className="item-desc">{item.description}</p>
@@ -44,7 +44,7 @@ function SearchResults() {
               </div>
               <div className="allpg-btn">
                 <form
-                  action={URL + `/delete/${item._id}?_method=DELETE`}
+                  action={`/delete/${item._id}?_method=DELETE`}
                   method="POST"
                   className="form-delete
               "
@@ -52,7 +52,7 @@ function SearchResults() {
                   <button className="delete-btn sliding">delete</button>
                 </form>
                 <Link
-                  to={URL + `/updatepost/${item._id}`}
+                  to={`/updatepost/${item._id}`}
                   className="form-edit
               "
                 >

@@ -45,7 +45,7 @@ function Allposts() {
                       : "https://firebasestorage.googleapis.com/v0/b/blogimgupload-3998a.appspot.com/o/nothumb.jpg?alt=media&token=39ca3696-b50c-444f-b3e1-786b4cb0533b"
                   }
                 />
-                <Link to={URL + `/post/${item._id}`}>
+                <Link to={`/post/${item._id}`}>
                   <div className="all-description">
                     <h1 className="item-title">
                       {item.title.slice(0, 25) +
@@ -60,17 +60,14 @@ function Allposts() {
               </div>
               <div className="allpg-btn">
                 <form
-                  action={URL + `/delete/post/${item._id}?_method=DELETE`}
+                  action={`/delete/post/${item._id}?_method=DELETE`}
                   method="POST"
                   className="form-delete
               "
                 >
                   <button className="delete-btn sliding">delete</button>
                 </form>
-                <Link
-                  to={URL + `/updatetype/post/${item._id}`}
-                  className="form-edit"
-                >
+                <Link to={`/updatetype/post/${item._id}`} className="form-edit">
                   <button className="delete-btn pulse">Edit</button>
                 </Link>
               </div>

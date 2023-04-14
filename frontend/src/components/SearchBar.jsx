@@ -20,9 +20,9 @@ function SearchBar() {
         className="search-bar"
       />
       <Link
-        to={URL + `/postsearch/${searchWord.search}`}
+        to={`/postsearch/${searchWord.search}`}
         onClick={() =>
-          (window.location.href = URL + `/postsearch/${searchWord.search}`)
+          (window.location.href = `/postsearch/${searchWord.search}`)
         }
       >
         <button className="search-btn">Search</button>

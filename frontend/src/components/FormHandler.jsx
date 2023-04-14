@@ -47,7 +47,7 @@ function FormHandler() {
     <div className="write-container ">
       <form
         method="POST"
-        action={publish === true ? URL + "/addpost" : URL + "/adddraft"}
+        action={publish === true ? "/addpost" : "/adddraft"}
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="postInput" value={postData} />

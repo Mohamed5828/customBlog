@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../Styling/css/components/blogPost.css";
+import URL from "../config";
 
 function DisplayDraft() {
   useEffect(() => {

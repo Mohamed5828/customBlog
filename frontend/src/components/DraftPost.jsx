@@ -38,7 +38,7 @@ function DraftPost() {
                       : "https://firebasestorage.googleapis.com/v0/b/blogimgupload-3998a.appspot.com/o/nothumb.jpg?alt=media&token=39ca3696-b50c-444f-b3e1-786b4cb0533b"
                   }
                 />
-                <Link to={URL + `/draft/${item._id}`}>
+                <Link to={`/draft/${item._id}`}>
                   <div className="all-description">
                     <h1 className="item-title">{item.title}</h1>
                     <p className="item-desc">{item.description}</p>
@@ -47,7 +47,7 @@ function DraftPost() {
               </div>
               <div className="allpg-btn">
                 <form
-                  action={URL + `/delete/draft/${item._id}?_method=DELETE`}
+                  action={`/delete/draft/${item._id}?_method=DELETE`}
                   method="POST"
                   className="form-delete
               "
@@ -55,7 +55,7 @@ function DraftPost() {
                   <button className="delete-btn sliding">delete</button>
                 </form>
                 <Link
-                  to={URL + `/updatetype/draft/${item._id}`}
+                  to={`/updatetype/draft/${item._id}`}
                   className="form-edit"
                 >
                   <button className="delete-btn pulse">Edit</button>
