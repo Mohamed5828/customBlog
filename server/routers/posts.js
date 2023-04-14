@@ -23,7 +23,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 process.env.NODE_ENV === "mydev"
   ? (URL = "")
-  : (URL = "https://mohameds-blog.adaptable.app");
+  : (URL = "https://helpful-speculoos-4bda58.netlify.app");
 const storage = getStorage();
 
 const post = Schemas.Posts;

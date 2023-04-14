@@ -47,7 +47,7 @@ function DraftPost() {
               </div>
               <div className="allpg-btn">
                 <form
-                  action={`/delete/draft/${item._id}?_method=DELETE`}
+                  action={URL + `/delete/draft/${item._id}?_method=DELETE`}
                   method="POST"
                   className="form-delete
               "
@@ -55,7 +55,7 @@ function DraftPost() {
                   <button className="delete-btn sliding">delete</button>
                 </form>
                 <Link
-                  to={`/updatetype/draft/${item._id}`}
+                  to={URL + `/updatetype/draft/${item._id}`}
                   className="form-edit"
                 >
                   <button className="delete-btn pulse">Edit</button>
