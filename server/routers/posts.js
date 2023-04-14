@@ -21,6 +21,9 @@ const firebaseConfig = {
   appId: "1:947780559632:web:e114389b99cf849a18fb95",
 };
 firebase.initializeApp(firebaseConfig);
+process.env.NODE_ENV === "mydev"
+  ? (URL = "")
+  : (URL = "https://mohameds-blog.adaptable.app");
 const storage = getStorage();
 
 const post = Schemas.Posts;
@@ -144,7 +147,7 @@ router.post("/addpost", async (req, res) => {
   try {
     await newPost.save(async (err, newPostResult) => {
       if (err) res.end("Error");
-      res.redirect("/postsubmitted");
+      res.redirect(URL + "/postsubmitted");
 
       res.end();
     });
@@ -171,7 +174,7 @@ router.post("/update/:type/:id", async (req, res) => {
 
     editedPost
       .save()
-      .then(() => res.redirect("/"))
+      .then(() => res.redirect(URL + "/"))
       .catch((err) => res.status(400).json(`Error ${err}`));
   });
 });
@@ -186,7 +189,7 @@ router.post("/delete/:type/:id", async (req, res) => {
   const Type = req.params.type;
   let schemaCollection = typeChecker(Type);
   await schemaCollection.findByIdAndDelete(req.params.id);
-  res.redirect("/");
+  res.redirect(URL + "/");
 });
 
 //get data from the create post page and send it to the db
@@ -205,12 +208,12 @@ router.post("/adddraft", async (req, res) => {
   try {
     await newDraft.save(async (err, newDraftResult) => {
       if (err) res.end("Error");
-      res.redirect("/drafts");
+      res.redirect(URL + "/drafts");
       res.end();
     });
   } catch {
     console.log(err);
-    res.redirect("/drafts");
+    res.redirect(URL + "/drafts");
     res.end("draft Failed");
   }
 });
@@ -230,7 +233,7 @@ router.post("/deletandaddpost/:id", async (req, res) => {
   try {
     await newPost.save(async (err, newPostResult) => {
       if (err) res.end("Error");
-      res.redirect("/postsubmitted");
+      res.redirect(URL + "/postsubmitted");
 
       res.end();
     });
