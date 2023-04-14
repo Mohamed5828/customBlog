@@ -26,9 +26,9 @@ function Navbar() {
             <li>
               <Link to={"drafts"}>Drafts</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to={"drafts"}>Search</Link>
-            </li>
+            </li> */}
             <li>
               <Link to={`documents/${uuidV4()}`}>Write a Post</Link>
             </li>

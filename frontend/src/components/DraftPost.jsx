@@ -7,7 +7,7 @@ function DraftPost() {
   useEffect(() => {
     fetchItems();
   }, []);
-  const [itemData, setItemData] = useState([""]);
+  const [itemData, setItemData] = useState([]);
   async function fetchItems() {
     const data = await fetch(URL + `/posts/draft`);
     const items = await data.json();
