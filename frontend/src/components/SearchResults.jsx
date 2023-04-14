@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import "../Styling/components/allItem.css";
+import "../Styling/css/components/allItem.css";
 import { Link, useParams } from "react-router-dom";
 import NotFound from "./NotFound";
 import URL from "../config";

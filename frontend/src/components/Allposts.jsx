@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import "../Styling/components/allItem.css";
+import "../Styling/css/components/allItem.css";
 import { Link } from "react-router-dom";
 import { v4 as uuidV4 } from "uuid";
 import URL from "../config";

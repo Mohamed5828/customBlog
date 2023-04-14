@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../Styling/components/blogPost.css";
+import "../Styling/css/components/blogPost.css";
 import NotFound from "./NotFound";
 import URL from "../config";
 
@@ -31,9 +31,11 @@ function DisplayPost() {
         <div className="post-content">
           <div className="post-title">{itemData.title}</div>
           <div dangerouslySetInnerHTML={innerHtml()}></div>
-          <div className="time">
-            Post at: {itemData.updated_at.slice(0, 10)}
-          </div>
+          {itemData.updated_at && (
+            <div className="time">
+              Post at: {itemData.updated_at.slice(0, 10)}
+            </div>
+          )}
         </div>
       </div>
     );

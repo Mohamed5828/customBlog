@@ -39,6 +39,9 @@
 .search-btn {
   @include btn($secondary);
 }
+.navbar-menu {
+  @include btn($secondary);
+}
 
 //btns hover effect
 

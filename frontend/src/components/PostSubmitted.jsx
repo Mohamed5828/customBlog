@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuidV4 } from "uuid";
-import "../Styling/components/postSubmitted.css";
+import "../Styling/css/components/postSubmitted.css";
 function PostSubmitted() {
   return (
     <div className="write-container">

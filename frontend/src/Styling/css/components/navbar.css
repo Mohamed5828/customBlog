@@ -1,30 +1,3 @@
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-}
-
-img,
-picture,
-svg,
-video {
-  display: block;
-  max-width: 100%;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  min-height: 100vh;
-}
-
-html {
-  color-scheme: dark light;
-}
-
 .navbar .container, .navbar {
   width: 100%;
   display: flex;
@@ -51,9 +24,6 @@ html {
 }
 .navbar .site-title {
   font-size: 1.5rem;
-}
-.logo {
-  cursor: pointer;
 }
 
 .navbar li {
@@ -103,10 +73,6 @@ html {
   font-size: 1.5rem;
   color: #222831;
   z-index: 4;
-}
-
-.sidebar:active {
-  display: block;
 }
 
 .sidebar-content {

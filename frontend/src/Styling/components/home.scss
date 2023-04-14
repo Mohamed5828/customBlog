@@ -3,6 +3,30 @@
 @import "../sassStyling/breakpoints";
 @import "../sassStyling/gridSystem";
 
+//reset
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100vh;
+}
+html {
+  color-scheme: dark light;
+}
+
 a:visited {
   color: black;
 }
@@ -75,7 +99,7 @@ a:visited {
 .img-description {
   color: antiquewhite;
   background-color: black;
-  opacity: 0.4;
+  opacity: 0.8;
   position: absolute;
   bottom: 0%;
   width: 100%;

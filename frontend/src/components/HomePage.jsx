@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import ImageSlider from "./components/ImageSlider";
-import Newsletter from "./components/Newsletter";
-import "../src/Styling/components/home.css";
-import "../src/Styling/components/card.css";
-import "../src/Styling/components/btn.css";
+import ImageSlider from "./ImageSlider";
+import Newsletter from "./Newsletter";
+import "../Styling/css/components/home.css";
+import "../Styling/css/components/card.css";
+import "../Styling/css/components/btn.css";
 import { Link } from "react-router-dom";
-import URL from "./config";
+import URL from "../config";
 
 const HomePage = () => {
   useEffect(() => {

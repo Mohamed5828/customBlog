@@ -1,6 +1,6 @@
 import React from "react";
 import FormHandler from "./components/FormHandler";
-import HomePage from "./HomePage";
+import HomePage from "./components/HomePage";
 import DisplayPost from "./components/DisplayPost";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";

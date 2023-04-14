@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import TextEditor from "./TextEditor";
-import "../Styling/components/btn.css";
-import "../Styling/components/writePost.css";
+import "../Styling/css/components/btn.css";
+import "../Styling/css/components/writePost.css";
 import URL from "../config";
 
 function FormHandler() {
