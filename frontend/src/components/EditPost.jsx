@@ -40,7 +40,7 @@ function EditPost() {
 
   return (
     <div className="write-container ">
-      <form method="POST" action={`/update/post/${id}?_method=PUT`}>
+      <form method="POST" action={URL + `/update/post/${id}?_method=PUT`}>
         <input type="hidden" name="postInput" value={postData} />
         <input type="hidden" name="titleInput" value={formData.title} />
         <input

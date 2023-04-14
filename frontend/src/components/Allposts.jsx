@@ -60,7 +60,7 @@ function Allposts() {
               </div>
               <div className="allpg-btn">
                 <form
-                  action={`/delete/post/${item._id}?_method=DELETE`}
+                  action={URL + `/delete/post/${item._id}?_method=DELETE`}
                   method="POST"
                   className="form-delete
               "
