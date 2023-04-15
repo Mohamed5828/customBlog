@@ -4,27 +4,15 @@ const Schemas = require("../Schemas");
 const multer = require("multer");
 const fs = require("fs");
 const {
-  getStorage,
   ref,
   uploadBytesResumable,
   getDownloadURL,
   deleteObject,
 } = require("firebase/storage");
-const firebase = require("firebase/app");
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBwKmYvl6eAKik33o-e7uAp_wS1m6wNVIY",
-  authDomain: "blogimgupload-3998a.firebaseapp.com",
-  projectId: "blogimgupload-3998a",
-  storageBucket: "blogimgupload-3998a.appspot.com",
-  messagingSenderId: "947780559632",
-  appId: "1:947780559632:web:e114389b99cf849a18fb95",
-};
-firebase.initializeApp(firebaseConfig);
+const { storage } = require("./firebase");
 process.env.NODE_ENV === "mydev"
   ? (URL = "")
   : (URL = "https://helpful-speculoos-4bda58.netlify.app");
-const storage = getStorage();
 
 const post = Schemas.Posts;
 const draft = Schemas.Drafts;
