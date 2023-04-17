@@ -24,7 +24,7 @@ function Allposts() {
           <div className="submit-details">
             <h2 className="submit-done">
               you dont have any post written at the moment maybe consider
-              <Link to={`/documents/${uuidV4()}`}> writting one</Link>
+              <Link to={`/documents/${uuidV4()}`}>writting one</Link>
             </h2>
           </div>
         </div>

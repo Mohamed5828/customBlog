@@ -4,8 +4,10 @@ import Newsletter from "./Newsletter";
 import "../Styling/css/components/home.css";
 import "../Styling/css/components/card.css";
 import "../Styling/css/components/btn.css";
+import "../Styling/css/components/loader.css";
 import { Link } from "react-router-dom";
 import URL from "../config";
+import Loading from "./Loading";
 
 const HomePage = () => {
   useEffect(() => {
@@ -28,9 +30,9 @@ const HomePage = () => {
 
     setItemData(items.slice(0, 6));
   }
-
   return (
     <div>
+      <Loading show={itemData.length === 0} />
       <div className="home-container">
         <h1 className="header">Featured Topics</h1>
         <div className="img-slider">
