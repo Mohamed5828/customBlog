@@ -1,0 +1,65 @@
+.ql-size-small {
+  font-size: 1rem;
+}
+
+.ql-size-normal {
+  font-size: 1.25rem;
+}
+
+.ql-size-large {
+  font-size: 1.5rem;
+}
+
+.ql-size-huge {
+  font-size: 2rem;
+}
+
+.ql-picker.ql-font .ql-picker-label[data-value="Sans Serif"]::before,
+.ql-picker.ql-font .ql-picker-item[data-value="Sans Serif"]::before {
+  font-family: "Sans Serif", cursive;
+  content: "Sans Serif" !important;
+}
+
+.ql-font-Sans Serif {
+  font-family: "Sans Serif", cursive;
+}
+
+.ql-picker.ql-font .ql-picker-label[data-value=Courier]::before,
+.ql-picker.ql-font .ql-picker-item[data-value=Courier]::before {
+  font-family: "Courier", cursive;
+  content: "Courier" !important;
+}
+
+.ql-font-Courier {
+  font-family: "Courier", cursive;
+}
+
+.ql-picker.ql-font .ql-picker-label[data-value=Impact]::before,
+.ql-picker.ql-font .ql-picker-item[data-value=Impact]::before {
+  font-family: "Impact", cursive;
+  content: "Impact" !important;
+}
+
+.ql-font-Impact {
+  font-family: "Impact", cursive;
+}
+
+.ql-picker.ql-font .ql-picker-label[data-value=Raleway]::before,
+.ql-picker.ql-font .ql-picker-item[data-value=Raleway]::before {
+  font-family: "Raleway", cursive;
+  content: "Raleway" !important;
+}
+
+.ql-font-Raleway {
+  font-family: "Raleway", cursive;
+}
+
+.ql-picker.ql-font .ql-picker-label[data-value=monospace]::before,
+.ql-picker.ql-font .ql-picker-item[data-value=Monospace]::before {
+  font-family: "Monospace", cursive;
+  content: "Monospace" !important;
+}
+
+.ql-font-monospace {
+  font-family: "Monospace", cursive;
+}

@@ -12,6 +12,11 @@
   z-index: 6;
 }
 
+.loader--hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .loader::after {
   content: "";
   width: 75px;

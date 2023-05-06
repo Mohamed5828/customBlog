@@ -4,6 +4,12 @@ import "quill/dist/quill.snow.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import URL from "../config";
+import "../Styling/css/components/editor.css";
+
+//font config
+const Font = Quill.import("formats/font");
+Font.whitelist = ["Sans Serif", "Courier", "Impact", "Raleway", "monospace"];
+Quill.register(Font, true);
 
 export default function TextEditor({ setPostData, postData }) {
   const [quill, setQuill] = useState();
@@ -31,11 +37,17 @@ export default function TextEditor({ setPostData, postData }) {
   const TOOLBAR_OPTIONS = {
     container: [
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
-      [{ font: [] }],
+      [
+        {
+          font: Font.whitelist,
+        },
+      ],
+      [{ size: ["small", "normal", "large", "huge"] }],
       [{ list: "ordered" }, { list: "bullet" }],
       ["bold", "italic", "underline"],
       [{ color: [] }, { background: [] }],
       [{ script: "sub" }, { script: "super" }],
+      [{ blockquote: "blockquote" }],
       [{ align: [] }],
       ["image", "blockquote", "code-block"],
       ["clean"],
@@ -116,9 +128,12 @@ export default function TextEditor({ setPostData, postData }) {
     wrapper.append(editor);
     const q = new Quill(editor, {
       theme: "snow",
-      modules: { toolbar: TOOLBAR_OPTIONS },
+      modules: {
+        toolbar: TOOLBAR_OPTIONS,
+      },
       placeholder: "Lets Type",
     });
+
     setQuill(q);
   }, []);
 

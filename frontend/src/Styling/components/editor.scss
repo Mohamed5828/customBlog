@@ -1,0 +1,33 @@
+@import "../sassStyling/colors";
+@import "../sassStyling/variables";
+
+$fontSize: (
+  "small": $base-font-size,
+  "normal": $base-font-size * 1.25,
+  "large": $base-font-size * 1.5,
+  "huge": $base-font-size * 2,
+);
+$fontTypes: (
+  "Sans Serif": "Sans Serif",
+  "Courier": "Courier",
+  "Impact": "Impact",
+  "Raleway": "Raleway",
+  "Monospace": "monospace",
+);
+
+@each $size, $font-size in $fontSize {
+  .ql-size-#{$size} {
+    font-size: $font-size;
+  }
+}
+
+@each $fontName, $fontFam in $fontTypes {
+  .ql-picker.ql-font .ql-picker-label[data-value="#{$fontFam}"]::before,
+  .ql-picker.ql-font .ql-picker-item[data-value="#{$fontName}"]::before {
+    font-family: $fontName, cursive;
+    content: $fontName !important;
+  }
+  .ql-font-#{$fontFam} {
+    font-family: $fontName, cursive;
+  }
+}

@@ -25,6 +25,9 @@
 .navbar .site-title {
   font-size: 1.5rem;
 }
+.logo {
+  cursor: pointer;
+}
 
 .navbar li {
   list-style: none;
