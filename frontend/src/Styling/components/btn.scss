@@ -38,6 +38,7 @@
 }
 .search-btn {
   @include btn($secondary);
+  padding: 1vh 1.5vh;
 }
 .navbar-menu {
   @include btn($secondary);

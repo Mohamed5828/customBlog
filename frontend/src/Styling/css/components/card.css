@@ -354,7 +354,7 @@
   display: inline-block;
   border: 1px solid #fff;
   border-radius: 10px;
-  background-color: rgba(203, 241, 245, 0.5764705882);
+  background-color: hsl(77, 51%, 89%);
   position: relative;
   transition: 0.4s ease-out;
   box-shadow: 0px 7px 10px rgba(109, 72, 209, 0.5);

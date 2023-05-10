@@ -1,5 +1,5 @@
 .post-submitted-card {
-  background-color: rgba(203, 241, 245, 0.5764705882);
+  background-color: hsl(77, 51%, 89%);
   display: flex;
   align-items: center;
   flex-wrap: wrap;

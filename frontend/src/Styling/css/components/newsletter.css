@@ -10,7 +10,7 @@
 .newsletter {
   display: flex;
   padding: 6.75rem;
-  background-color: rgb(206, 121, 121);
+  background-color: #aac8a7;
   width: 100%;
   justify-content: flex-end;
 }

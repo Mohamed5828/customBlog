@@ -73,7 +73,12 @@ const HomePage = () => {
       <Newsletter />
       <div className="footer">
         <h3>Mohamed | </h3>
-        <div className="socials">f - i - y</div>
+        <div className="socials">
+          <Link to={"https://github.com/Mohamed5828/Reddit"}>GitHub</Link> -{" "}
+          <Link to={"https://www.linkedin.com/in/mohamed-abdelreheem/"}>
+            Linkedin
+          </Link>
+        </div>
       </div>
     </div>
   );

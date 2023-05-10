@@ -28,7 +28,7 @@
 }
 .navbar li a {
   text-decoration: none;
-  padding: $base-padding;
+  margin: $base-margin;
   transition: $main-transition;
   color: $navbarText;
 }
@@ -38,6 +38,7 @@
 
 .search-bar {
   @extend %input-field;
+  height: 4vh;
 }
 
 .navbar-menu {
@@ -90,4 +91,10 @@
 
 .sidebar a:hover {
   color: #000;
+}
+
+.nav-search {
+  padding: 0;
+  display: flex;
+  align-items: center;
 }

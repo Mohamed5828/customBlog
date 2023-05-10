@@ -427,6 +427,7 @@
   line-height: 1;
   color: black;
   transition: 0.25s;
+  padding: 1vh 1.5vh;
 }
 .search-btn:hover, .search-btn:focus {
   border-color: #c3bef0;

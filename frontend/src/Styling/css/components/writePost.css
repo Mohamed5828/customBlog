@@ -5,7 +5,7 @@
   padding: 0 0.75rem;
   padding-top: 5rem;
   box-sizing: border-box;
-  background-color: #e3fdfd;
+  background-color: #f6ffde;
 }
 
 .description-input, .title-input {
@@ -18,7 +18,7 @@
 }
 
 .write-container {
-  background-color: #e3fdfd;
+  background-color: #f6ffde;
   display: flex;
   justify-content: center;
 }

@@ -1,3 +1,4 @@
+@use "sass:math";
 @import "../sassStyling/colors";
 @import "../sassStyling/variables";
 @import "../sassStyling/breakpoints";
@@ -27,8 +28,8 @@ html {
   color-scheme: dark light;
 }
 
-a:visited {
-  color: black;
+a {
+  color: $text;
 }
 .img-slider {
   display: block;
@@ -120,6 +121,8 @@ a:visited {
   background-color: grey;
   height: 65%;
   overflow: hidden;
+  border-radius: math.div($base-border-radius, 2)
+    math.div($base-border-radius, 2) 0 0;
 }
 
 @include xs {
@@ -151,4 +154,9 @@ a:visited {
     height: $slider-height * 1.75;
     width: $slider-width * 1.75;
   }
+}
+
+.socials a {
+  text-decoration: none;
+  color: $text;
 }

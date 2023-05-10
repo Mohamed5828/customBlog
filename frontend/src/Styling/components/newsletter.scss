@@ -5,7 +5,7 @@
 .newsletter {
   display: flex;
   padding: $base-padding * 9;
-  background-color: rgb(206, 121, 121);
+  background-color: $newsLetter;
   width: 100%;
   justify-content: flex-end;
 }
