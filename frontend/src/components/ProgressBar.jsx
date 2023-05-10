@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 const Bar = styled.div`
-  margin-top: 73px;
+  margin-top: 63px;
   position: fixed;
   height: 6px;
   border-radius: 0px 2px 0px 0px;
