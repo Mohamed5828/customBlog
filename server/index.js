@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const cors = require("cors");
+const cache = require("./cache");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(
   })
 );
 app.use("/", routesHandler);
+app.use(cache);
 app.use(methodOverride("_method"));
 
 const connectDB = async () => {

@@ -24,12 +24,14 @@ function DisplayPost() {
     return { __html: itemData.posts };
   }
   if (itemData.length == 0) {
-    return <NotFound />;
+    setTimeout(() => {
+      return <NotFound />;
+    }, 2000);
   } else {
     return (
       <div className="post-container">
         <div className="post-content">
-          <div className="post-title">{itemData.title}</div>
+          <title className="post-title">{itemData.title}</title>
           <div dangerouslySetInnerHTML={innerHtml()}></div>
           {itemData.updated_at && (
             <div className="time">

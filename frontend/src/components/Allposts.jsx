@@ -4,6 +4,7 @@ import "../Styling/css/components/allItem.css";
 import { Link } from "react-router-dom";
 import { v4 as uuidV4 } from "uuid";
 import URL from "../config";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function Allposts() {
   useEffect(() => {
@@ -18,18 +19,20 @@ function Allposts() {
   }
   console.log(URL);
   if (itemData.length == 0) {
-    return (
-      <div className="write-container">
-        <div className="post-submitted-card">
-          <div className="submit-details">
-            <h2 className="submit-done">
-              you dont have any post written at the moment maybe consider 
-              <Link to={`/documents/${uuidV4()}`}>writting one</Link>
-            </h2>
+    setTimeout(() => {
+      return (
+        <div className="write-container">
+          <div className="post-submitted-card">
+            <div className="submit-details">
+              <h2 className="submit-done">
+                you dont have any post written at the moment maybe consider
+                <Link to={`/documents/${uuidV4()}`}> writting one</Link>
+              </h2>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }, 2000);
   } else {
     return (
       <div className="allItems-container">
@@ -37,7 +40,7 @@ function Allposts() {
           return (
             <div className="post-item ">
               <div className="main-padding">
-                <img
+                <LazyLoadImage
                   className="all-img"
                   src={
                     item.imgs != ""
@@ -45,6 +48,7 @@ function Allposts() {
                       : "https://firebasestorage.googleapis.com/v0/b/blogimgupload-3998a.appspot.com/o/nothumb.jpg?alt=media&token=39ca3696-b50c-444f-b3e1-786b4cb0533b"
                   }
                 />
+
                 <Link to={`/post/${item._id}`}>
                   <div className="all-description">
                     <h1 className="item-title">
