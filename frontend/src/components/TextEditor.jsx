@@ -3,7 +3,7 @@ import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import URL from "../config";
+import URL from "../tools/config";
 import "../Styling/css/components/editor.css";
 
 //font config

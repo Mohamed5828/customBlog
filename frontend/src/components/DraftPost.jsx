@@ -1,19 +1,12 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import URL from "../config";
-
+import URL from "../tools/config";
+import { useDataFetching } from "../tools/DataFetching";
 function DraftPost() {
-  useEffect(() => {
-    fetchItems();
-  }, []);
-  const [itemData, setItemData] = useState([]);
-  async function fetchItems() {
-    const data = await fetch(URL + `/posts/draft`);
-    const items = await data.json();
-    setItemData(items);
-  }
-  if (itemData.length == 0) {
+  const { data, loading, error } = useDataFetching(URL + `/posts/draft`);
+
+  if (loading) {
     return (
       <div className="write-container">
         <div className="post-submitted-card">
@@ -26,7 +19,7 @@ function DraftPost() {
   } else {
     return (
       <div className="allItems-container">
-        {itemData.map((item) => {
+        {data.map((item) => {
           return (
             <div className="post-item">
               <div className="main-padding">

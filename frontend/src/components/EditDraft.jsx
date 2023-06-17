@@ -2,38 +2,30 @@ import React from "react";
 import { useEffect, useState } from "react";
 import TextEditor from "./TextEditor";
 import { useParams } from "react-router-dom";
-import URL from "../config";
+import URL from "../tools/config";
+import { useDataFetching } from "../tools/DataFetching";
 
 function EditPost() {
-  useEffect(() => {
-    fetchItems();
-  }, []);
-  const [itemData, setItemData] = useState();
   const [submit, setSubmit] = useState();
   const [formData, setFormData] = useState({ title: "", postDescription: "" });
   const [postData, setPostData] = useState("");
 
   const { id } = useParams();
 
-  async function fetchItems() {
-    const data = await fetch(URL + `/draft/${id}`);
-    const items = await data.json();
-    setItemData(items);
-    console.log(items);
-  }
+  const { data, loading, error } = useDataFetching(URL + `/draft/${id}`);
 
   useEffect(() => {
-    if (itemData == null) return;
+    if (loading) return;
     setFormData({
-      title: `${itemData.title}`,
-      postDescription: `${itemData.description}`,
-      imgs: `${itemData.imgs}`,
+      title: `${data.title}`,
+      postDescription: `${data.description}`,
+      imgs: `${data.imgs}`,
     });
-  }, [itemData]);
+  }, [data]);
   useEffect(() => {
-    if (itemData == null) return;
-    setPostData(itemData.drafts);
-  }, [itemData]);
+    if (loading) return;
+    setPostData(data.drafts);
+  }, [data]);
   function handleChange(event) {
     setFormData((prevFormData) => {
       return { ...prevFormData, [event.target.name]: event.target.value };

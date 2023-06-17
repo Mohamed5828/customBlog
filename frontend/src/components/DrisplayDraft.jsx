@@ -2,26 +2,19 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../Styling/css/components/blogPost.css";
-import URL from "../config";
+import URL from "../tools/config";
+import { useDataFetching } from "../tools/DataFetching";
 
 function DisplayDraft() {
-  useEffect(() => {
-    fetchItems();
-  }, []);
   const { id } = useParams();
   console.log(id);
 
-  const [itemData, setItemData] = useState([""]);
-  async function fetchItems() {
-    const data = await fetch(URL + `/draft/${id}`);
-    const items = await data.json();
-    setItemData(items);
-  }
+  const { data, loading, error } = useDataFetching(URL + `/draft/${id}`);
 
   function innerHtml() {
     // itemData.map((item) => {
     // console.log(itemData[0].posts);
-    return { __html: itemData.drafts };
+    return { __html: data.drafts };
     // });
   }
 

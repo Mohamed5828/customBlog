@@ -3,7 +3,7 @@ const router = express.Router();
 const Schemas = require("../Schemas");
 const multer = require("multer");
 const fs = require("fs");
-const cache = require("../cache");
+// const = require("../);
 const {
   ref,
   uploadBytesResumable,
@@ -50,7 +50,7 @@ function typeChecker(reqType) {
 }
 
 //get all posts to display in all post page
-router.get("/posts/:type", cache, async (req, res) => {
+router.get("/posts/:type", async (req, res) => {
   const Type = req.params.type;
   let schemaCollection = typeChecker(Type);
   const myData = await schemaCollection.find({}).exec((err, Data) => {
@@ -71,7 +71,7 @@ router.get("/enviroment", async (req, res) => {
 
 //searching for post by title
 
-router.get("/postsearch/:title", cache, async (req, res) => {
+router.get("/postsearch/:title", async (req, res) => {
   // console.log(`${req.params.title}`);
   const myPosts = await post
     .find({ title: { $regex: req.params.title, $options: "i" } })
@@ -87,7 +87,7 @@ router.get("/postsearch/:title", cache, async (req, res) => {
 
 //get certain post to display in each blog post page
 
-router.get("/:type/:id", cache, async (req, res) => {
+router.get("/:type/:id", async (req, res) => {
   const Type = req.params.type;
   let schemaCollection = typeChecker(Type);
   const myData = await schemaCollection
@@ -103,7 +103,7 @@ router.get("/:type/:id", cache, async (req, res) => {
 });
 //get certain post to display in update post page
 
-router.get("/updatetype/:type/:id", cache, async (req, res) => {
+router.get("/updatetype/:type/:id", async (req, res) => {
   const Type = req.params.type;
   let schemaCollection = typeChecker(Type);
   const myData = await schemaCollection

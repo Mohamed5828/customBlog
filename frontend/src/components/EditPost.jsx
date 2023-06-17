@@ -2,41 +2,34 @@ import React from "react";
 import { useEffect, useState } from "react";
 import TextEditor from "./TextEditor";
 import { useParams } from "react-router-dom";
-import URL from "../config";
+import URL from "../tools/config";
+import { useDataFetching } from "../tools/DataFetching";
 
 function EditPost() {
-  useEffect(() => {
-    fetchItems();
-  }, []);
-  const [itemData, setItemData] = useState();
   const [formData, setFormData] = useState({ title: "", postDescription: "" });
   const [postData, setPostData] = useState("");
 
   const { id } = useParams();
 
-  async function fetchItems() {
-    const data = await fetch(URL + `/post/${id}`);
-    const items = await data.json();
-    setItemData(items);
-  }
+  const { data, loading, error } = useDataFetching(URL + `/post/${id}`);
 
   useEffect(() => {
-    if (itemData == null) return;
+    if (loading) return;
     setFormData({
-      title: `${itemData.title}`,
-      postDescription: `${itemData.description}`,
+      title: `${data.title}`,
+      postDescription: `${data.description}`,
     });
-  }, [itemData]);
+  }, [data]);
   useEffect(() => {
-    if (itemData == null) return;
-    setPostData(itemData.posts);
-  }, [itemData]);
+    if (loading) return;
+    setPostData(data.posts);
+  }, [data]);
   function handleChange(event) {
     setFormData((prevFormData) => {
       return { ...prevFormData, [event.target.name]: event.target.value };
     });
   }
-  // console.log(itemData);
+  // console.log(data);
 
   return (
     <div className="write-container ">

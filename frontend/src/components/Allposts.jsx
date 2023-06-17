@@ -3,40 +3,30 @@ import { useState } from "react";
 import "../Styling/css/components/allItem.css";
 import { Link } from "react-router-dom";
 import { v4 as uuidV4 } from "uuid";
-import URL from "../config";
+import URL from "../tools/config";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useDataFetching } from "../tools/DataFetching";
 
 function Allposts() {
-  useEffect(() => {
-    fetchItems();
-  }, []);
-  const [itemData, setItemData] = useState([]);
-  async function fetchItems() {
-    const data = await fetch(URL + `/posts/post`);
-    const itemReverse = await data.json();
-    const items = itemReverse.reverse();
-    setItemData(items);
-  }
+  const { data, loading, error } = useDataFetching(URL + `/posts/post`);
   console.log(URL);
-  if (itemData.length == 0) {
-    setTimeout(() => {
-      return (
-        <div className="write-container">
-          <div className="post-submitted-card">
-            <div className="submit-details">
-              <h2 className="submit-done">
-                you dont have any post written at the moment maybe consider
-                <Link to={`/documents/${uuidV4()}`}> writting one</Link>
-              </h2>
-            </div>
+  if (loading) {
+    return (
+      <div className="write-container">
+        <div className="post-submitted-card">
+          <div className="submit-details">
+            <h2 className="submit-done">
+              you dont have any post written at the moment maybe consider
+              <Link to={`/documents/${uuidV4()}`}> writting one</Link>
+            </h2>
           </div>
         </div>
-      );
-    }, 2000);
+      </div>
+    );
   } else {
     return (
       <div className="allItems-container">
-        {itemData.map((item) => {
+        {data.map((item) => {
           return (
             <div className="post-item ">
               <div className="main-padding">

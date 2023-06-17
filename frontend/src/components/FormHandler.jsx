@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import TextEditor from "./TextEditor";
 import "../Styling/css/components/btn.css";
 import "../Styling/css/components/writePost.css";
-import URL from "../config";
+import URL from "../tools/config";
 
 function FormHandler() {
   // const [files, setFiles] = useState([]);
